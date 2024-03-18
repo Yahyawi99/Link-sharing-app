@@ -9,17 +9,31 @@ export default function Login() {
 
       <div>
         <h1>Login</h1>
-        <p>Add your details below to get back into the app</p>
+        <p>Add your details below to get back into the app.</p>
 
         <form action="" className={styles.form}>
           <div>
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email" />
+            <label htmlFor="email">
+              Email <span>*</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="e.g. yassin@gmail.com"
+            />
           </div>
 
           <div>
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" />
+            <label htmlFor="password">
+              Password <span>*</span>
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter your password"
+            />
           </div>
 
           <button className={styles.submit}>Login</button>
