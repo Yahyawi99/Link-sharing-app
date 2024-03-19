@@ -1,8 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Logo from "@/components/logo";
+import { useFormState } from "react-dom";
+import * as actions from "@/actions";
 import styles from "@/styles/pages/signup/index.module.css";
 
 export default function Signup() {
+  const [formState, action] = useFormState(actions.signup, { errors: {} });
+
   return (
     <div className={styles.container}>
       <Logo width={75} height={75} />
@@ -11,7 +17,7 @@ export default function Signup() {
         <h1>Sign up</h1>
         <p>Let’s get you started sharing your links!</p>
 
-        <form action="" className={styles.form}>
+        <form action={action} className={styles.form}>
           <div>
             <label htmlFor="username">
               username <span>*</span>

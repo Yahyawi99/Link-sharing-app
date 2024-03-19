@@ -3,6 +3,7 @@
 import { object, string } from "zod";
 import User from "@/models/User";
 import connect from "@/db";
+import { redirect } from "next/navigation";
 
 const loginShema = object({
   email: string().email(),
@@ -68,4 +69,35 @@ export async function login(
 }
 
 // ====================Signup====================
-export async function signup() {}
+export async function signup(
+  formState: AuthFormState,
+  formData: FormData
+): Promise<AuthFormState> {
+  const data = {
+    username: formData.get("username"),
+    email: formData.get("email"),
+    password: formData.get("password"),
+  };
+
+  const result = loginShema.safeParse(data);
+
+  if (!result.success) {
+    return {
+      errors: result.error.flatten().fieldErrors,
+    };
+  }
+
+  try {
+    await connect();
+    await User.create(data);
+  } catch (error) {
+    console.log(error);
+  }
+
+  redirect("/signup");
+
+  // return {
+  //   errors: {},
+  //   success: true,
+  // };
+}
