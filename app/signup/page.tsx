@@ -17,7 +17,16 @@ export default function Signup() {
         <h1>Sign up</h1>
         <p>Let’s get you started sharing your links!</p>
 
-        <form action={action} className={styles.form}>
+        <form
+          action={action}
+          className={styles.form}
+          autoComplete="true"
+          noValidate
+        >
+          <p className={styles.errorMsg}>
+            {formState.errors._auth?.join(", ")}
+          </p>
+
           <div>
             <label htmlFor="username">
               username <span>*</span>
@@ -28,6 +37,9 @@ export default function Signup() {
               id="username"
               placeholder="e.g. yassin"
             />
+            <p className={styles.errorMsg}>
+              {formState.errors.username?.join(", ")}
+            </p>
           </div>
 
           <div>
@@ -40,6 +52,9 @@ export default function Signup() {
               id="email"
               placeholder="e.g. yassin@gmail.com"
             />
+            <p className={styles.errorMsg}>
+              {formState.errors.email?.join(", ")}
+            </p>
           </div>
 
           <div>
@@ -52,9 +67,14 @@ export default function Signup() {
               id="password"
               placeholder="At least 8 characters"
             />
+            <p className={styles.errorMsg}>
+              {formState.errors.password?.join(", ")}
+            </p>
           </div>
 
-          <button className={styles.submit}>Create new account</button>
+          <button type="submit" className={styles.submit}>
+            Create new account
+          </button>
         </form>
 
         <p>

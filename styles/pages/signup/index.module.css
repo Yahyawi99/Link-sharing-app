@@ -26,7 +26,7 @@
 }
 
 
-
+/* ===============Form=============== */
 .form>div {
   display: flex;
   flex-direction: column;
@@ -73,4 +73,10 @@
   background: var(--white);
   color: var(--purple);
   border-color: var(--purple);
+}
+
+.errorMsg {
+  color: var(--red);
+  text-align: center;
+  margin: 0 !important;
 }

@@ -16,7 +16,12 @@ export default function Login() {
         <h1>Login</h1>
         <p>Add your details below to get back into the app.</p>
 
-        <form action={action} className={styles.form} noValidate>
+        <form
+          action={action}
+          className={styles.form}
+          autoComplete="true"
+          noValidate
+        >
           <p className={styles.errorMsg}>
             {formState.errors._auth?.join(", ")}
           </p>

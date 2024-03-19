@@ -80,9 +80,11 @@ export async function signup(
     password: formData.get("password"),
   };
 
-  const result = loginShema.safeParse(data);
+  const result = signupShema.safeParse(data);
 
   if (!result.success) {
+    console.log("in");
+
     return {
       errors: result.error.flatten().fieldErrors,
     };
