@@ -12,11 +12,17 @@ export default function Login() {
     errors: {},
   });
 
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [formState]);
+
   return (
     <div className={styles.container}>
       <Logo width={75} height={75} />
 
-      <div>
+      <div className={loading ? styles.animate : ""}>
         <h1>Login</h1>
         <p>Add your details below to get back into the app.</p>
 
@@ -25,6 +31,7 @@ export default function Login() {
           className={styles.form}
           autoComplete="true"
           noValidate
+          onSubmit={() => setLoading(true)}
         >
           <p className={styles.errorMsg}>
             {formState.errors._auth?.join(", ")}

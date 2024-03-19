@@ -1,8 +1,9 @@
 "use client";
 
+import { useFormState } from "react-dom";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "@/components/logo";
-import { useFormState } from "react-dom";
 import * as actions from "@/actions";
 import styles from "@/styles/pages/signup/index.module.css";
 
@@ -11,16 +12,23 @@ export default function Signup() {
     errors: {},
   });
 
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [formState]);
+
   return (
     <div className={styles.container}>
       <Logo width={75} height={75} />
 
-      <div>
+      <div className={loading ? styles.animate : ""}>
         <h1>Sign up</h1>
         <p>Let’s get you started sharing your links!</p>
 
         <form
           action={action}
+          onSubmit={() => setLoading(true)}
           className={styles.form}
           autoComplete="true"
           noValidate

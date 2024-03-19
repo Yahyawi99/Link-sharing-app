@@ -27,6 +27,7 @@
 
 /* ************************ */
 /* Form */
+
 .form>div {
   display: flex;
   flex-direction: column;
@@ -79,4 +80,26 @@
   color: var(--red);
   text-align: center;
   margin: 0 !important;
+}
+
+
+/* =========Loading animation========= */
+.container .animate {
+  animation-name: loading;
+  animation-duration: .75s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes loading {
+  from {
+    opacity: .75;
+    pointer-events: none;
+  }
+
+  to {
+    opacity: .25;
+    pointer-events: none;
+  }
 }
