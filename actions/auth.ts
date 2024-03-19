@@ -4,7 +4,7 @@ import { object, string } from "zod";
 import User from "@/models/User";
 import connect from "@/db";
 import { redirect } from "next/navigation";
-import { MongooseError } from "mongoose";
+import { MongoServerError } from "mongodb";
 
 const loginShema = object({
   email: string().email(),
@@ -83,8 +83,6 @@ export async function signup(
   const result = signupShema.safeParse(data);
 
   if (!result.success) {
-    console.log("in");
-
     return {
       errors: result.error.flatten().fieldErrors,
     };
@@ -92,6 +90,14 @@ export async function signup(
 
   try {
     await connect();
+
+    const user = await User.find({ email: data.email });
+
+    if (user) {
+      return {
+        errors: { _auth: ["You're already signed in!"] },
+      };
+    }
     await User.create(data);
   } catch (err: unknown) {
     if (err instanceof Error) {

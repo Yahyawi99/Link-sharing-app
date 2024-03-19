@@ -42,7 +42,7 @@ export default function Signup() {
             </p>
           </div>
 
-          <div>
+          <div className={styles.email}>
             <label htmlFor="email">
               Email <span>*</span>
             </label>
