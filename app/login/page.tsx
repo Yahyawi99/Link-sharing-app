@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { useFormState } from "react-dom";
+import * as actions from "@/actions";
 import Logo from "@/components/logo";
 import styles from "@/styles/pages/login/index.module.css";
 
 export default function Login() {
+  const [formState, action] = useFormState(actions.login, { errors: {} });
   return (
     <div className={styles.container}>
       <Logo width={75} height={75} />
@@ -11,7 +16,7 @@ export default function Login() {
         <h1>Login</h1>
         <p>Add your details below to get back into the app.</p>
 
-        <form action="" className={styles.form}>
+        <form action={action} className={styles.form}>
           <div>
             <label htmlFor="email">
               Email <span>*</span>
