@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 const URI = process.env.MONGODB_URI || "";
 let cahedConnection: typeof mongoose | null = null;
-const option = {};
 
 const connect = async () => {
   if (cahedConnection) {

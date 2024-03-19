@@ -16,8 +16,12 @@ export default function Login() {
         <h1>Login</h1>
         <p>Add your details below to get back into the app.</p>
 
-        <form action={action} className={styles.form}>
-          <div>
+        <form action={action} className={styles.form} noValidate>
+          <p className={styles.errorMsg}>
+            {formState.errors._auth?.join(", ")}
+          </p>
+
+          <div className={styles.email}>
             <label htmlFor="email">
               Email <span>*</span>
             </label>
@@ -27,6 +31,9 @@ export default function Login() {
               id="email"
               placeholder="e.g. yassin@gmail.com"
             />
+            <p className={styles.errorMsg}>
+              {formState.errors.email?.join(", ")}
+            </p>
           </div>
 
           <div>
@@ -39,9 +46,14 @@ export default function Login() {
               id="password"
               placeholder="Enter your password"
             />
+            <p className={styles.errorMsg}>
+              {formState.errors.password?.join(", ")}
+            </p>
           </div>
 
-          <button className={styles.submit}>Login</button>
+          <button type="submit" className={styles.submit}>
+            Login
+          </button>
         </form>
 
         <p>
