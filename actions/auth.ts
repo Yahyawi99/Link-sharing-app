@@ -108,9 +108,4 @@ export async function signup(
   }
 
   redirect("/login");
-
-  // return {
-  //   errors: {},
-  //   success: true,
-  // };
 }

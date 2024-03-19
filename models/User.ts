@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
-const userSchema = new mongoose.Schema(
+const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
@@ -23,11 +24,19 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// =========Hash the password after every save=========
+UserSchema.pre("save", async function () {
+  if (this.isModified("password")) {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password as string, salt);
+  }
+});
+
 let User: mongoose.Model<any>;
 try {
   User = mongoose.model("User");
 } catch (error) {
-  User = mongoose.model("User", userSchema);
+  User = mongoose.model("User", UserSchema);
 }
 
 export default User;
