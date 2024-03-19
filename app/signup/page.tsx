@@ -7,7 +7,9 @@ import * as actions from "@/actions";
 import styles from "@/styles/pages/signup/index.module.css";
 
 export default function Signup() {
-  const [formState, action] = useFormState(actions.signup, { errors: {} });
+  const [formState, action] = useFormState(actions.signup, {
+    errors: {},
+  });
 
   return (
     <div className={styles.container}>

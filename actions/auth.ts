@@ -28,13 +28,13 @@ const signupShema = object({
 });
 
 interface AuthFormState {
-  success?: boolean;
   errors: {
     username?: string[];
     email?: string[];
     password?: string[];
     _auth?: string[];
   };
+  success?: boolean;
 }
 
 // ====================Login====================

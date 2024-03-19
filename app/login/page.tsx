@@ -1,13 +1,16 @@
 "use client";
 
+import { useFormState, useFormStatus } from "react-dom";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useFormState } from "react-dom";
 import * as actions from "@/actions";
 import Logo from "@/components/logo";
 import styles from "@/styles/pages/login/index.module.css";
 
 export default function Login() {
-  const [formState, action] = useFormState(actions.login, { errors: {} });
+  const [formState, action] = useFormState(actions.login, {
+    errors: {},
+  });
 
   return (
     <div className={styles.container}>
