@@ -90,8 +90,7 @@ export async function signup(
 
   try {
     await connect();
-
-    const user = await User.find({ email: data.email });
+    const user = await User.findOne({ email: data.email });
 
     if (user) {
       return {
