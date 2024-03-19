@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Document } from "mongoose";
 import bcrypt from "bcrypt";
 
 const UserSchema = new mongoose.Schema(
@@ -23,6 +23,12 @@ const UserSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+export interface UserDocument extends Document {
+  username: string;
+  email: string;
+  password: string;
+}
 
 // =========Hash the password after every save=========
 UserSchema.pre("save", async function () {

@@ -1,10 +1,10 @@
 "use server";
 
-import { object, string } from "zod";
-import User from "@/models/User";
 import connect from "@/db";
+import User, { UserDocument } from "@/models/User";
+import { createToken, attachCookieToResponse } from "@/utils";
+import { object, string } from "zod";
 import { redirect } from "next/navigation";
-import { MongoServerError } from "mongodb";
 
 const loginShema = object({
   email: string().email(),
@@ -56,13 +56,18 @@ export async function login(
   }
 
   await connect();
-  const user = await User.findOne({ email: data.email });
+  const user: UserDocument | null = await User.findOne({ email: data.email });
 
   if (!user) {
     return {
       errors: { _auth: ["Please sign up before attempting to log in."] },
     };
   }
+
+  const token = createToken(user);
+  attachCookieToResponse(token);
+
+  // cookies.set()
 
   // TODO : create a session
 
