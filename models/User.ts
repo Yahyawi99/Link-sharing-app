@@ -23,4 +23,11 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("User") || mongoose.model("User", userSchema);
+let User: mongoose.Model<any>;
+try {
+  User = mongoose.model("User");
+} catch (error) {
+  User = mongoose.model("User", userSchema);
+}
+
+export default User;
