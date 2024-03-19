@@ -4,6 +4,7 @@ import { object, string } from "zod";
 import User from "@/models/User";
 import connect from "@/db";
 import { redirect } from "next/navigation";
+import { MongooseError } from "mongoose";
 
 const loginShema = object({
   email: string().email(),
@@ -90,11 +91,15 @@ export async function signup(
   try {
     await connect();
     await User.create(data);
-  } catch (error) {
-    console.log(error);
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      return {
+        errors: { _auth: [err.message] },
+      };
+    }
   }
 
-  redirect("/signup");
+  redirect("/login");
 
   // return {
   //   errors: {},
