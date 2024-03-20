@@ -67,6 +67,8 @@ export async function login(
   const token = createToken(user);
   attachCookieToResponse(token);
 
+  redirect("/");
+
   // cookies.set()
 
   // TODO : create a session
