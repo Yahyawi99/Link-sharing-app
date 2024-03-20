@@ -13,7 +13,7 @@ export const createJWT = (token: TokenType) =>
 export const attachCookieToResponse = (tokenUser: TokenType) => {
   const token = createJWT(tokenUser);
 
-  const oneDay = 10 * 1000;
+  const oneDay = 24 * 3600 * 1000;
 
   cookies().set("access_token", token, {
     httpOnly: true,
