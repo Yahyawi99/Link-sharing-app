@@ -1,8 +1,18 @@
-import Link from "next/link";
+"use client";
+
+import { Dispatch, SetStateAction } from "react";
 import Logo from "@/components/shared/logo";
 import styles from "@/styles/components/header/index.module.css";
 
-export default async function Header() {
+interface Props {
+  toggleContent: Dispatch<SetStateAction<string>>;
+}
+
+export default function Header() {
+  const toggleContent = (content: string) => {
+    localStorage.setItem("content", content);
+  };
+
   return (
     <header className={styles.header}>
       <div>
@@ -11,7 +21,7 @@ export default async function Header() {
       </div>
 
       <div>
-        <button>
+        <button onClick={() => toggleContent("links")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="21"
@@ -27,7 +37,7 @@ export default async function Header() {
           <p>Links</p>
         </button>
 
-        <button>
+        <button onClick={() => toggleContent("profile")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="21"
