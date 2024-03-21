@@ -1,14 +1,16 @@
 "use client";
 
 import { Dispatch, SetStateAction } from "react";
+import Link from "next/link";
 import Logo from "@/components/shared/logo";
 import styles from "@/styles/pages/home/header.module.css";
 
 interface Props {
+  content: string;
   toggleContent: Dispatch<SetStateAction<string>>;
 }
 
-export default function Header({ toggleContent }: Props) {
+export default function Header({ toggleContent, content }: Props) {
   return (
     <header className={styles.header}>
       <div>
@@ -17,7 +19,10 @@ export default function Header({ toggleContent }: Props) {
       </div>
 
       <div>
-        <button onClick={() => toggleContent("links")}>
+        <button
+          className={content === "links" ? styles.active : ""}
+          onClick={() => toggleContent("links")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="21"
@@ -33,7 +38,10 @@ export default function Header({ toggleContent }: Props) {
           <p>Links</p>
         </button>
 
-        <button onClick={() => toggleContent("profile")}>
+        <button
+          className={content === "profile" ? styles.active : ""}
+          onClick={() => toggleContent("profile")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="21"
@@ -51,7 +59,9 @@ export default function Header({ toggleContent }: Props) {
       </div>
 
       <div>
-        <button>Preview</button>
+        <Link href="/preview">
+          <button>Preview</button>
+        </Link>
       </div>
     </header>
   );

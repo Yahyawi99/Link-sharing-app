@@ -9,7 +9,7 @@ export default function Wrapper({ children }: { children: JSX.Element[] }) {
 
   return (
     <main className={styles.container}>
-      <Header toggleContent={setContent} />
+      <Header toggleContent={setContent} content={content} />
 
       <div className={styles.main}>
         {content === "links" ? children[0] : children[1]}
