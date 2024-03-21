@@ -3,7 +3,7 @@
 import { useFormState } from "react-dom";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Logo from "@/components/logo";
+import Logo from "@/components/shared/logo";
 import * as actions from "@/actions";
 import styles from "@/styles/pages/signup/index.module.css";
 

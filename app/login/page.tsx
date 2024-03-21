@@ -4,7 +4,7 @@ import { useFormState, useFormStatus } from "react-dom";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import * as actions from "@/actions";
-import Logo from "@/components/logo";
+import Logo from "@/components/shared/logo";
 import styles from "@/styles/pages/login/index.module.css";
 
 export default function Login() {

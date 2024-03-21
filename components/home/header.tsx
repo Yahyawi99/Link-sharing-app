@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Logo from "./logo";
+import Logo from "@/components/shared/logo";
 import styles from "@/styles/components/header/index.module.css";
 
 export default async function Header() {
