@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Header from "./header";
+import PhoneIllustration from "./illustration";
 import styles from "@/styles/pages/home/index.module.css";
 
 export default function Wrapper({ children }: { children: JSX.Element[] }) {
@@ -12,7 +13,9 @@ export default function Wrapper({ children }: { children: JSX.Element[] }) {
       <Header toggleContent={setContent} content={content} />
 
       <div className={styles.main}>
-        {content === "links" ? children[0] : children[1]}
+        <PhoneIllustration />
+
+        <div>{content === "links" ? children[0] : children[1]}</div>
       </div>
     </main>
   );
