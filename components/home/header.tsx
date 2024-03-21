@@ -8,11 +8,7 @@ interface Props {
   toggleContent: Dispatch<SetStateAction<string>>;
 }
 
-export default function Header() {
-  const toggleContent = (content: string) => {
-    localStorage.setItem("content", content);
-  };
-
+export default function Header({ toggleContent }: Props) {
   return (
     <header className={styles.header}>
       <div>
