@@ -1,3 +1,3 @@
-export default function Links() {
+export default async function Links() {
   return <div>LINKS</div>;
 }
