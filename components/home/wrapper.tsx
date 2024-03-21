@@ -8,10 +8,12 @@ export default function Wrapper({ children }: { children: JSX.Element[] }) {
   const [content, setContent] = useState("links");
 
   return (
-    <main className={styles.main}>
+    <main className={styles.container}>
       <Header toggleContent={setContent} />
 
-      <div>{content === "links" ? children[0] : children[1]}</div>
+      <div className={styles.main}>
+        {content === "links" ? children[0] : children[1]}
+      </div>
     </main>
   );
 }

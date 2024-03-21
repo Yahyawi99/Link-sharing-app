@@ -1,3 +1,10 @@
-.main {
+.container {
   padding: 25px;
+}
+
+.main {
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  padding: 15px 10px;
 }

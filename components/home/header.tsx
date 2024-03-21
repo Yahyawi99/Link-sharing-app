@@ -2,7 +2,7 @@
 
 import { Dispatch, SetStateAction } from "react";
 import Logo from "@/components/shared/logo";
-import styles from "@/styles/components/header/index.module.css";
+import styles from "@/styles/pages/home/header.module.css";
 
 interface Props {
   toggleContent: Dispatch<SetStateAction<string>>;
