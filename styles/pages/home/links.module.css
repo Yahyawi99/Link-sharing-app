@@ -80,7 +80,7 @@
 .link input {
   height: 45px;
   font-size: 1.15rem;
-  border: 1px solid var(--grey);
+  border: 1px solid var(--light-grey);
   border-radius: 5px;
   outline: none;
   padding-left: 15px;

@@ -2,25 +2,39 @@
   position: relative;
 }
 
-.container>img {
+.container>div>img:nth-child(3) {
   position: absolute;
   right: 15px;
   bottom: 15px;
   transform-origin: center;
 }
 
-.platforms {
+.container>div {
   width: 100%;
-  max-height: 300px;
   display: flex;
+  background-color: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 5px;
+  padding-left: 15px;
+}
+
+.container>div:nth-child(2) {
+  align-items: center;
+}
+
+.container>div input {
+  border: none;
+}
+
+/* ===============PLatform=============== */
+.platforms {
+  max-height: 300px;
   flex-direction: column;
   gap: 10px;
-  background-color: var(--white);
-  border-radius: 5px;
   position: absolute;
   top: calc(100% + 10px);
   overflow-y: scroll;
-  padding: 15px;
+  padding: 15px 0;
 }
 
 .platform {
@@ -57,6 +71,7 @@
 .platform:hover>p {
   color: var(--purple);
 }
+
 
 /* ========================== */
 .opened>img {

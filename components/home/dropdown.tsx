@@ -6,43 +6,51 @@ import platforms from "@/data/platforrms.json";
 import styles from "@/styles/pages/home/dropdown.module.css";
 
 export default function Dropdown() {
-  const [choice, setChoice] = useState(platforms[0]);
+  const [platformChoice, setPlatformChoice] = useState(platforms[0]);
+
+  const formatIconName = (initialName: string) => {
+    return initialName.toLocaleLowerCase().split(/\.| /).join("");
+  };
 
   return (
     <div className={styles.container}>
       <label htmlFor="platformName">Platform</label>
-      {/* <div> */}
-      <input
-        id="platformName"
-        type="text"
-        name="platform"
-        value={choice}
-        readOnly
-      />
-      <Image
-        src="/icons/icon-chevron-down.svg"
-        alt="chevron-down"
-        width={15}
-        height={15}
-      />
-      {/* </div> */}
+      <div>
+        <Image
+          src={`/icons/select-icons/icon-${formatIconName(platformChoice)}.svg`}
+          alt="platform"
+          width={20}
+          height={20}
+        />
+
+        <input
+          id="platformName"
+          type="text"
+          name="platform"
+          value={platformChoice}
+          readOnly
+        />
+        <Image
+          src="/icons/icon-chevron-down.svg"
+          alt="chevron-down"
+          width={15}
+          height={15}
+        />
+      </div>
 
       <div className={styles.platforms}>
         {platforms.map((platform, i) => {
-          const iconName = platform.toLocaleLowerCase().split(/\.| /).join("");
-
           return (
-            <div key={i} className={styles.platform}>
-              {/* <Image
-                src={`/icons/select-icons/icon-${iconName}.svg`}
-                alt={platform}
-                width={20}
-                height={20}
-              /> */}
-
+            <div
+              key={i}
+              className={styles.platform}
+              onClick={() => setPlatformChoice(platform)}
+            >
               <span
                 style={{
-                  maskImage: `url(/icons/select-icons/icon-${iconName}.svg)`,
+                  maskImage: `url(/icons/select-icons/icon-${formatIconName(
+                    platform
+                  )}.svg)`,
                 }}
               ></span>
               <p>{platform}</p>
