@@ -7,7 +7,7 @@ interface LogoProps {
 export default function Logo({ width, height }: LogoProps) {
   return (
     <Image
-      src="/images/logo-devlinks-small.svg"
+      src="/icons/logo-devlinks-small.svg"
       alt="logo"
       width={width}
       height={height}
