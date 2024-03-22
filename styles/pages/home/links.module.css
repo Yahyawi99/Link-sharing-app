@@ -88,7 +88,24 @@
 
 
 .submitBtn {
-  border-top: 1px solid var(--light-grey);
+  align-items: flex-end;
+  border-top: 2px solid var(--light-grey);
   padding-top: 25px;
   margin-top: 50px;
+}
+
+.submitBtn button {
+  width: 100px;
+  height: 45px;
+  color: var(--white);
+  background-color: var(--purple);
+  border: 2px solid transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.submitBtn button:hover {
+  background-color: var(--purple-hover);
 }
