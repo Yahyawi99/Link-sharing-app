@@ -1,3 +1,7 @@
+.linksContainer {
+  padding-bottom: 50px;
+}
+
 .linksContainer>h1 {
   font-size: 3rem;
   margin-bottom: 5px;
@@ -22,6 +26,72 @@
   margin: 50px 0 20px 0;
 }
 
+
 .linksContainer>button:hover {
+  background-color: var(--purple-hover);
+}
+
+.links>div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+/* =================Link================= */
+.link {
   background-color: var(--purple-light);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.link>div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.link>div:nth-child(1) {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.link>div:nth-child(1)>p {
+  color: var(--grey);
+  font-weight: 600;
+}
+
+.link div:nth-child(1) button {
+  background-color: transparent;
+  color: var(--grey);
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.link div:nth-child(1) button:hover {
+  color: var(--red);
+}
+
+.link label {
+  color: var(--dark-grey);
+}
+
+.link input {
+  height: 45px;
+  font-size: 1rem;
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+  outline: none;
+  padding-left: 15px;
+}
+
+.link div:nth-child(2) input {
+  cursor: pointer;
+}
+
+.submitBtn {
+  border-top: 1px solid var(--light-grey);
+  padding-top: 25px;
+  margin-top: 50px;
 }

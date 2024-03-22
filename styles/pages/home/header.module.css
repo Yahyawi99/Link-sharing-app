@@ -49,7 +49,7 @@
 }
 
 .header>div button:hover {
-  background: var(--light-grey);
+  background: var(--purple-hover);
 }
 
 .header svg {

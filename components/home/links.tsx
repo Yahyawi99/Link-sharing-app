@@ -1,3 +1,4 @@
+import Dropdown from "./dropdown";
 import styles from "@/styles/pages/home/links.module.css";
 
 export default async function Links() {
@@ -12,13 +13,13 @@ export default async function Links() {
       <button>+ Add new link</button>
 
       <form className={styles.links}>
-        <div>
+        <div className={styles.link}>
           <div>
-            <p> = Link #1</p>
-            <button>remove</button>
+            <p>Link #1</p>
+            <button>Remove</button>
           </div>
 
-          <div></div>
+          <Dropdown />
 
           <div>
             <label htmlFor="url">Link</label>
@@ -29,6 +30,10 @@ export default async function Links() {
               placeholder="e.g., https://www.example.com/username"
             />
           </div>
+        </div>
+
+        <div className={styles.submitBtn}>
+          <button type="submit">Save</button>
         </div>
       </form>
     </div>
