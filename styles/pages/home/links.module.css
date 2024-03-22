@@ -79,7 +79,7 @@
 
 .link input {
   height: 45px;
-  font-size: 1rem;
+  font-size: 1.15rem;
   border: 1px solid var(--grey);
   border-radius: 5px;
   outline: none;
