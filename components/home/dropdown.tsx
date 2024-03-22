@@ -7,6 +7,7 @@ import styles from "@/styles/pages/home/dropdown.module.css";
 
 export default function Dropdown() {
   const [platformChoice, setPlatformChoice] = useState(platforms[0]);
+  const [isOpened, setIsOpened] = useState(false);
 
   const formatIconName = (initialName: string) => {
     return initialName.toLocaleLowerCase().split(/\.| /).join("");
@@ -15,7 +16,8 @@ export default function Dropdown() {
   return (
     <div className={styles.container}>
       <label htmlFor="platformName">Platform</label>
-      <div>
+
+      <div onClick={() => setIsOpened(!isOpened)}>
         <Image
           src={`/icons/select-icons/icon-${formatIconName(platformChoice)}.svg`}
           alt="platform"
@@ -30,7 +32,9 @@ export default function Dropdown() {
           value={platformChoice}
           readOnly
         />
+
         <Image
+          className={isOpened ? styles.rotate : ""}
           src="/icons/icon-chevron-down.svg"
           alt="chevron-down"
           width={15}
@@ -38,7 +42,7 @@ export default function Dropdown() {
         />
       </div>
 
-      <div className={styles.platforms}>
+      <div className={`${styles.platforms} ${isOpened ? styles.opened : ""}`}>
         {platforms.map((platform, i) => {
           return (
             <div
@@ -61,8 +65,3 @@ export default function Dropdown() {
     </div>
   );
 }
-
-/* {
-     "name":"Github",
-    "icon" :"/icons/select-icons/icon-github"
-   },*/

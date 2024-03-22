@@ -7,6 +7,7 @@
   right: 15px;
   bottom: 15px;
   transform-origin: center;
+  transition: .1s;
 }
 
 .container>div {
@@ -19,7 +20,14 @@
 }
 
 .container>div:nth-child(2) {
+  height: 45px;
   align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.container>div:nth-child(2) input {
+  cursor: pointer;
 }
 
 .container>div input {
@@ -34,6 +42,9 @@
   position: absolute;
   top: calc(100% + 10px);
   overflow-y: scroll;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: .1s;
   padding: 15px 0;
 }
 
@@ -74,6 +85,10 @@
 
 
 /* ========================== */
-.opened>img {
+.opened {
+  transform: scaleY(1);
+}
+
+.rotate {
   transform: rotate(180deg);
 }

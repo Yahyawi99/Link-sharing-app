@@ -86,9 +86,6 @@
   padding-left: 15px;
 }
 
-.link div:nth-child(2) input {
-  cursor: pointer;
-}
 
 .submitBtn {
   border-top: 1px solid var(--light-grey);
