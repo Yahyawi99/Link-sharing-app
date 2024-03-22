@@ -45,6 +45,7 @@
   transform-origin: top;
   transform: scaleY(0);
   transition: .1s;
+  z-index: 10;
   padding: 15px 0;
 }
 

@@ -48,7 +48,10 @@ export default function Dropdown() {
             <div
               key={i}
               className={styles.platform}
-              onClick={() => setPlatformChoice(platform)}
+              onClick={() => {
+                setPlatformChoice(platform);
+                setIsOpened(false);
+              }}
             >
               <span
                 style={{
