@@ -8,7 +8,6 @@ import styles from "@/styles/pages/home/links.module.css";
 
 export default function Links() {
   const [numOfLinks, setNumOfLinks] = useState<string[]>([]);
-  const linksRef = useRef<HTMLFormElement | null>(null);
 
   const revomeLink = (num: string) => {
     const newLinks = numOfLinks.filter((number) => number !== num);
@@ -28,16 +27,14 @@ export default function Links() {
       </p>
 
       <button
-        className={
-          linksRef.current?.children.length === 5 ? styles.disableBtn : ""
-        }
+        className={numOfLinks.length === 5 ? styles.disableBtn : ""}
         type="button"
         onClick={addLink}
       >
         + Add new link
       </button>
 
-      <form ref={linksRef} className={styles.links}>
+      <form className={styles.links}>
         {numOfLinks.length ? (
           numOfLinks.map((num, i) => {
             return (

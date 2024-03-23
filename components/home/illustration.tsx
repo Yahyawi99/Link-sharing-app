@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "@/styles/pages/home/illustration.module.css";
 
-export default function PhoneIllustration() {
+export default async function PhoneIllustration() {
   return (
     <div className={styles.container}>
       <div className={styles.img}>

@@ -13,9 +13,9 @@ export default function Wrapper({ children }: { children: JSX.Element[] }) {
       <Header toggleContent={setContent} content={content} />
 
       <div className={styles.main}>
-        <PhoneIllustration />
+        {children[0]}
 
-        <div>{content === "links" ? children[0] : children[1]}</div>
+        <div>{content === "links" ? children[1] : children[2]}</div>
       </div>
     </main>
   );
