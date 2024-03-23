@@ -1,12 +1,15 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
+import { useFormState } from "react-dom";
+import * as actions from "@/actions";
 import { v4 as uuidv4 } from "uuid";
 import Image from "next/image";
 import Dropdown from "./dropdown";
 import styles from "@/styles/pages/home/links.module.css";
 
 export default function Links() {
+  const [formState, action] = useFormState(actions.saveLinks, { errors: [] });
   const [numOfLinks, setNumOfLinks] = useState<string[]>([]);
 
   const revomeLink = (num: string) => {
@@ -34,7 +37,7 @@ export default function Links() {
         + Add new link
       </button>
 
-      <form className={styles.links}>
+      <form action={action} className={styles.links}>
         {numOfLinks.length ? (
           numOfLinks.map((num, i) => {
             return (
@@ -70,7 +73,13 @@ export default function Links() {
         )}
 
         <div className={styles.submitBtn}>
-          <button type="submit">Save</button>
+          <button
+            className={numOfLinks.length === 0 ? styles.disableBtn : ""}
+            type="submit"
+          >
+            Save
+          </button>
+          <p className={styles.error}>{formState.errors.join("")}</p>
         </div>
       </form>
     </div>

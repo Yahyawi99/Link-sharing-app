@@ -133,6 +133,14 @@
   text-align: center;
 }
 
+.error {
+  width: 100%;
+  color: var(--red);
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-align: center;
+}
+
 
 /* ================================ */
 .linksContainer .disableBtn {
