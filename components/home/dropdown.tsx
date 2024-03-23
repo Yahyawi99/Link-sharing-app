@@ -5,7 +5,7 @@ import Image from "next/image";
 import platforms from "@/data/platforrms.json";
 import styles from "@/styles/pages/home/dropdown.module.css";
 
-export default function Dropdown() {
+export default function Dropdown({ num }: { num: number }) {
   const [platformChoice, setPlatformChoice] = useState(platforms[0]);
   const [isOpened, setIsOpened] = useState(false);
 
@@ -15,20 +15,20 @@ export default function Dropdown() {
 
   return (
     <div className={styles.container}>
-      <label htmlFor="platformName">Platform</label>
+      <label htmlFor={`platformName-${num}`}>Platform</label>
 
       <div onClick={() => setIsOpened(!isOpened)}>
         <Image
           src={`/icons/select-icons/icon-${formatIconName(platformChoice)}.svg`}
-          alt="platform"
+          alt={`platform-${num}`}
           width={20}
           height={20}
         />
 
         <input
-          id="platformName"
+          id={`platformName-${num}`}
           type="text"
-          name="platform"
+          name={`platform-${num}`}
           value={platformChoice}
           readOnly
         />
