@@ -46,6 +46,7 @@
   transform: scaleY(0);
   transition: .1s;
   z-index: 10;
+  box-shadow: var(--shadow);
   padding: 15px 0;
 }
 

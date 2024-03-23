@@ -19,7 +19,7 @@
 
 body {
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   background: var(--borders);
   overflow-x: hidden;
 }

@@ -116,6 +116,7 @@
   align-items: center;
   background-color: var(--borders);
   border-radius: 10px;
+  position: relative;
   margin: 20px 0 0 0;
   padding: 50px 20px;
 }

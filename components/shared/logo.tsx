@@ -11,7 +11,7 @@ export default function Logo({ width, height }: LogoProps) {
       alt="logo"
       width={width}
       height={height}
-      priority
+      priority={true}
     />
   );
 }

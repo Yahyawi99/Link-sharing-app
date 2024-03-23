@@ -9,6 +9,7 @@ export default function PhoneIllustration() {
           src="/images/illustration-phone-mockup.svg"
           alt="phone-illustration"
           fill={true}
+          priority={true}
         />
       </div>
     </div>
