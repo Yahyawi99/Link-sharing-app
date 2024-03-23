@@ -1,5 +1,8 @@
 "use server";
 
+import { PlatformLinks } from "@/interfaces";
+import { isUrlValid } from "@/utils/validUrls";
+
 interface FormState {
   errors: string[];
 }
@@ -8,24 +11,27 @@ export async function saveLinks(
   formState: FormState,
   formData: FormData
 ): Promise<FormState> {
-  const platforms = Array.from(formData.entries()).filter((entrie) => {
-    const [key, value] = entrie;
+  const platformsAndUrls = Array.from(formData.entries()).filter((entrie) => {
+    const [key, _] = entrie;
 
-    if (key.startsWith("platform")) {
+    if (key.startsWith("platform") || key.startsWith("url")) {
       return key;
     }
   });
 
-  platforms.forEach((platform) => {
-    const [key, value] = platform;
+  const data: PlatformLinks[] = [];
 
-    console.log(value);
+  for (let i = 0; i < platformsAndUrls.length; i++) {
+    data.push({
+      name: platformsAndUrls[i][1],
+      value: platformsAndUrls[i + 1][1],
+    });
+    i++;
+  }
 
-    if (!value) {
-      return { errors: ["Check for invalid URLs!"] };
-    }
-  });
-  console.log(platforms);
+  if (!isUrlValid(data)) {
+    return { errors: ["Check for invalid URLs !"] };
+  }
 
   return { errors: [] };
 }
