@@ -9,8 +9,12 @@ import Dropdown from "./dropdown";
 import styles from "@/styles/pages/home/links.module.css";
 
 export default function Links() {
-  const [formState, action] = useFormState(actions.saveLinks, { errors: [] });
+  const [formState, action] = useFormState(
+    actions.saveLinks.bind(null, localStorage.getItem("email") || ""),
+    { errors: [] }
+  );
   const [numOfLinks, setNumOfLinks] = useState<string[]>([]);
+  console.log(localStorage.getItem("email"));
 
   const revomeLink = (num: string) => {
     const newLinks = numOfLinks.filter((number) => number !== num);

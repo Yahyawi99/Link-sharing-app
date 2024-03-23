@@ -2,12 +2,15 @@
 
 import { PlatformLinks } from "@/interfaces";
 import { isUrlValid } from "@/utils/validUrls";
+import connect from "@/db";
+import User from "@/models/User";
 
 interface FormState {
   errors: string[];
 }
 
 export async function saveLinks(
+  userEmail: string,
   formState: FormState,
   formData: FormData
 ): Promise<FormState> {
@@ -32,6 +35,11 @@ export async function saveLinks(
   if (!isUrlValid(data)) {
     return { errors: ["Check for invalid URLs !"] };
   }
+
+  await connect();
+  console.log(userEmail);
+  const user = await User.findOne({ email: userEmail });
+  console.log(user);
 
   return { errors: [] };
 }
