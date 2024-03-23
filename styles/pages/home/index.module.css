@@ -3,14 +3,13 @@
 }
 
 .main {
-  height: fit-content;
   min-height: 100vh;
   display: flex;
   gap: 25px;
 }
 
 .main>div {
-  height: fit-content;
+  min-height: 100vh;
   background-color: var(--white);
   border-radius: 10px;
   box-shadow: var(--shadow);

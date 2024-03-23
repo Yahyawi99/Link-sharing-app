@@ -1,12 +1,15 @@
 .container {
-  max-height: 750px;
+  max-height: 925px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .img {
-  width: 100%;
-  height: 650px;
+  width: 550px;
+  height: 550px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
