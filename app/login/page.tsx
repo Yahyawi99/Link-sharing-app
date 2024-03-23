@@ -11,6 +11,7 @@ export default function Login() {
   const [formState, action] = useFormState(actions.login, {
     errors: {},
   });
+  const [email, setEmail] = useState("");
 
   const [loading, setLoading] = useState(false);
 
@@ -31,7 +32,10 @@ export default function Login() {
           className={styles.form}
           autoComplete="true"
           noValidate
-          onSubmit={() => setLoading(true)}
+          onSubmit={() => {
+            setLoading(true);
+            localStorage.setItem("email", email);
+          }}
         >
           <p className={styles.errorMsg}>
             {formState.errors._auth?.join(", ")}
@@ -46,6 +50,7 @@ export default function Login() {
               name="email"
               id="email"
               placeholder="e.g. yassin@gmail.com"
+              onChange={(e) => setEmail(e.currentTarget.value)}
             />
             <p className={styles.errorMsg}>
               {formState.errors.email?.join(", ")}

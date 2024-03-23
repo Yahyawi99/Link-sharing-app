@@ -68,12 +68,6 @@ export async function login(
   attachCookieToResponse(token);
 
   redirect("/");
-
-  // cookies.set()
-
-  // TODO : create a session
-
-  return { errors: {}, success: true };
 }
 
 // ====================Signup====================
