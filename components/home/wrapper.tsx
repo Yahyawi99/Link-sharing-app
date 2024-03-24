@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Header from "./header";
-import PhoneIllustration from "./illustration";
 import styles from "@/styles/pages/home/index.module.css";
 
 export default function Wrapper({ children }: { children: JSX.Element[] }) {

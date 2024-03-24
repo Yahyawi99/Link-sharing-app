@@ -1,11 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { SingleLink } from "@/interfaces/links";
 import Image from "next/image";
 import platforms from "@/data/platforrms.json";
 import styles from "@/styles/pages/home/dropdown.module.css";
 
-export default function Dropdown({ num }: { num: number }) {
+export default function Dropdown({
+  link,
+  num,
+}: {
+  link: SingleLink;
+  num: number;
+}) {
   const [platformChoice, setPlatformChoice] = useState(platforms[0]);
   const [isOpened, setIsOpened] = useState(false);
 

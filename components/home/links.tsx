@@ -1,28 +1,31 @@
 "use client";
 
-import { useState } from "react";
 import { useFormState } from "react-dom";
 import * as actions from "@/actions";
 import { v4 as uuidv4 } from "uuid";
+import { useMain } from "@/context";
 import Image from "next/image";
 import Dropdown from "./dropdown";
 import styles from "@/styles/pages/home/links.module.css";
 
 export default function Links() {
+  const { links, setLinks } = useMain();
   const [formState, action] = useFormState(
-    actions.saveLinks.bind(null, localStorage.getItem("email") || ""),
+    actions.saveLinks.bind(null, "email"),
     { errors: [] }
   );
-  const [numOfLinks, setNumOfLinks] = useState<string[]>([]);
-  console.log(localStorage.getItem("email"));
 
-  const revomeLink = (num: string) => {
-    const newLinks = numOfLinks.filter((number) => number !== num);
-    setNumOfLinks(newLinks);
+  const revomeLink = (id: string) => {
+    setLinks((prev) => {
+      const filteredPrev = prev.filter((link) => link.id != id);
+      return filteredPrev;
+    });
   };
 
   const addLink = () => {
-    setNumOfLinks([...numOfLinks, uuidv4()]);
+    setLinks((prev) => {
+      return [...prev, { id: uuidv4(), name: "Github", url: "" }];
+    });
   };
 
   return (
@@ -34,7 +37,7 @@ export default function Links() {
       </p>
 
       <button
-        className={numOfLinks.length === 5 ? styles.disableBtn : ""}
+        className={links.length === 5 ? styles.disableBtn : ""}
         type="button"
         onClick={addLink}
       >
@@ -42,23 +45,18 @@ export default function Links() {
       </button>
 
       <form action={action} className={styles.links}>
-        {numOfLinks.length ? (
-          numOfLinks.map((num, i) => {
+        {links.length ? (
+          links.map((link, i) => {
             return (
-              <div key={`link-${num}`} className={styles.link}>
+              <div key={`link-${i}`} className={styles.link}>
                 <div>
                   <p>Link #{i + 1}</p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      revomeLink(num);
-                    }}
-                  >
+                  <button type="button" onClick={() => revomeLink(link.id)}>
                     Remove
                   </button>
                 </div>
 
-                <Dropdown num={i + 1} />
+                <Dropdown link={link} num={i + 1} />
 
                 <div>
                   <label htmlFor={`url${i + 1}`}>Link</label>
@@ -78,7 +76,7 @@ export default function Links() {
 
         <div className={styles.submitBtn}>
           <button
-            className={numOfLinks.length === 0 ? styles.disableBtn : ""}
+            className={links.length === 0 ? styles.disableBtn : ""}
             type="submit"
           >
             Save

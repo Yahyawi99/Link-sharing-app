@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Homenaje } from "next/font/google";
+import MainContextProvider from "@/context";
 import "./globals.css";
 
 const homenaje = Homenaje({
@@ -19,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={homenaje.className}>{children}</body>
+      <body className={homenaje.className}>
+        <MainContextProvider> {children}</MainContextProvider>
+      </body>
     </html>
   );
 }
