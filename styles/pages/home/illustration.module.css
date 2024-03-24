@@ -83,12 +83,10 @@
   margin-left: auto;
 }
 
-
-.links .github {
-  color: var(--white);
-  background-color: var(--dark-grey);
+.links .frontendmentor {
+  box-shadow: var(--link-shadow);
 }
 
-.links .github span {
-  background-color: var(--white);
+.links .frontendmentor svg path {
+  fill: var(--frontendmentor-icon);
 }

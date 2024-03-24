@@ -37,12 +37,17 @@ export default function PhoneIllustration() {
                 <div
                   key={link.id}
                   className={styles[formatIconName(link.name)]}
+                  style={{
+                    color: `var(--${formatIconName(link.name)}-clr)`,
+                    background: `var(--${formatIconName(link.name)}-bg)`,
+                  }}
                 >
                   <span
                     style={{
                       maskImage: `url(/icons/select-icons/icon-${formatIconName(
                         link.name
                       )}.svg)`,
+                      background: `var(--${formatIconName(link.name)}-icon)`,
                     }}
                   />
                   <p>{link.name}</p>

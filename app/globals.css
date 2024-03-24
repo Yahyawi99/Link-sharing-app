@@ -9,6 +9,66 @@
   --white: #ffffff;
   --red: #ff3939;
   --shadow: 0px 5px 20px rgba(0, 0, 0, .15);
+  --link-shadow: 0px 0px 0px 1px rgba(0, 0, 0, .15);
+  /* links */
+  --github-clr: #fff;
+  --github-bg: #0A0A0A;
+  --github-icon: #fff;
+
+  --frontendmentor-clr: #0A0A0A;
+  --frontendmentor-bg: #fff;
+  --frontendmentor-icon: #3A7CFD;
+
+  --twitter-clr: #fff;
+  --twitter-bg: #3A7CFD;
+  --twitter-icon: #fff;
+
+  --linkedin-clr: #fff;
+  --linkedin-bg: #3A7CFD;
+  --linkedin-icon: #fff;
+
+  --youtube-clr: #fff;
+  --youtube-bg: #FF0000;
+  --youtube-icon: #fff;
+
+  --facebook-clr: #fff;
+  --facebook-bg: #1877F2;
+  --facebook-icon: #fff;
+
+  --twitch-clr: #fff;
+  --twitch-bg: #9146FF;
+  --twitch-icon: #fff;
+
+  --devto-clr: #fff;
+  --devto-bg: #0A0A0A;
+  --devto-icon: #fff;
+
+  --codewars-clr: #fff;
+  --codewars-bg: #B1361E;
+  --codewars-icon: #fff;
+
+  --codepen-clr: #fff;
+  --codepen-bg: #0A0A0A;
+  --codepen-icon: #fff;
+
+  --freecodecamp-clr: #fff;
+  --freecodecamp-bg: #006400;
+  --freecodecamp-icon: #fff;
+
+  --gitlab-clr: #fff;
+  --gitlab-bg: #FC6D26;
+  --gitlab-icon: #fff;
+
+  --hashnode-clr: #fff;
+  --hashnode-bg: #2962FF;
+  --hashnode-icon: #fff;
+
+
+  --stackoverflow-clr: #fff;
+  --stackoverflow-bg: #FFA500;
+  --stackoverflow-icon: #fff;
+
+
 }
 
 * {
