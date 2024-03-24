@@ -34,7 +34,10 @@ export default function PhoneIllustration() {
           <div className={styles.links}>
             {links.map((link) => {
               return (
-                <div className={styles[formatIconName(link.name)]}>
+                <div
+                  key={link.id}
+                  className={styles[formatIconName(link.name)]}
+                >
                   <span
                     style={{
                       maskImage: `url(/icons/select-icons/icon-${formatIconName(

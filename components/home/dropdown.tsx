@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useMain } from "@/context";
 import { SingleLink } from "@/interfaces/links";
 import { formatIconName } from "@/utils/format-icon-name";
 import Image from "next/image";
@@ -14,8 +15,23 @@ export default function Dropdown({
   link: SingleLink;
   num: number;
 }) {
-  const [platformChoice, setPlatformChoice] = useState(platforms[0]);
+  const { setLinks } = useMain();
   const [isOpened, setIsOpened] = useState(false);
+
+  const toggelPltaform = (platform: string) => {
+    setLinks((prev) => {
+      const editedPrev = prev.map((singleLink) => {
+        if (singleLink.id === link.id) {
+          singleLink.name = platform;
+        }
+        return singleLink;
+      });
+
+      return editedPrev;
+    });
+
+    setIsOpened(false);
+  };
 
   return (
     <div className={styles.container}>
@@ -23,7 +39,7 @@ export default function Dropdown({
 
       <div onClick={() => setIsOpened(!isOpened)}>
         <Image
-          src={`/icons/select-icons/icon-${formatIconName(platformChoice)}.svg`}
+          src={`/icons/select-icons/icon-${formatIconName(link.name)}.svg`}
           alt={`platform-${num}`}
           width={20}
           height={20}
@@ -33,7 +49,7 @@ export default function Dropdown({
           id={`platformName-${num}`}
           type="text"
           name={`platform-${num}`}
-          value={platformChoice}
+          value={link.name}
           readOnly
         />
 
@@ -52,10 +68,7 @@ export default function Dropdown({
             <div
               key={i}
               className={styles.platform}
-              onClick={() => {
-                setPlatformChoice(platform);
-                setIsOpened(false);
-              }}
+              onClick={() => toggelPltaform(platform)}
             >
               <span
                 style={{
