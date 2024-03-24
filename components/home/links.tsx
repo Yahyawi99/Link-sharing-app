@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useFormState } from "react-dom";
 import * as actions from "@/actions";
 import { v4 as uuidv4 } from "uuid";
@@ -10,8 +11,9 @@ import styles from "@/styles/pages/home/links.module.css";
 
 export default function Links() {
   const { links, setLinks } = useMain();
+  const [userEmail, setUserEmail] = useState("");
   const [formState, action] = useFormState(
-    actions.saveLinks.bind(null, "email"),
+    actions.saveLinks.bind(null, userEmail),
     { errors: [] }
   );
 
@@ -27,6 +29,10 @@ export default function Links() {
       return [...prev, { id: uuidv4(), name: "Github", url: "" }];
     });
   };
+
+  useEffect(() => {
+    setUserEmail(localStorage.getItem("email") || "");
+  }, []);
 
   return (
     <div className={styles.linksContainer}>

@@ -37,7 +37,6 @@ export async function saveLinks(
   }
 
   await connect();
-  console.log(userEmail);
   const user = await User.findOne({ email: userEmail });
   console.log(user);
 
