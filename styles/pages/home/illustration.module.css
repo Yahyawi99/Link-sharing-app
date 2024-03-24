@@ -38,12 +38,19 @@
 }
 
 .user img {
+  border: 3px solid var(--purple);
+  border-radius: 50%;
   margin-bottom: 17px;
 }
 
+
 .user>p:nth-child(2) {
-  width: 100%;
+  font-weight: 600;
   margin-bottom: 5px;
+}
+
+.user>p:nth-child(3) {
+  color: var(--grey);
 }
 
 /* ============Links============ */
@@ -54,28 +61,31 @@
 .links>div {
   width: 190px;
   height: 40px;
-  border-radius: 8px;
   display: flex;
   align-items: center;
   gap: 5px;
-  background-color: red;
+  font-size: .9rem;
+  border-radius: 8px;
   padding: 0 10px;
 }
 
 .links span {
   width: 20px;
   height: 23px;
-  background-color: var(--grey);
   mask-repeat: no-repeat;
   mask-size: 20px 20px;
+}
+
+.links .arrow {
+  margin-left: auto;
 }
 
 
 .links .github {
   color: var(--white);
-  background-color: #000;
+  background-color: var(--dark-grey);
 }
 
 .links .github span {
-  background-color: #fff;
+  background-color: var(--white);
 }
