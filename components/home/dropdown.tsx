@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { SingleLink } from "@/interfaces/links";
+import { formatIconName } from "@/utils/format-icon-name";
 import Image from "next/image";
 import platforms from "@/data/platforrms.json";
 import styles from "@/styles/pages/home/dropdown.module.css";
@@ -15,10 +16,6 @@ export default function Dropdown({
 }) {
   const [platformChoice, setPlatformChoice] = useState(platforms[0]);
   const [isOpened, setIsOpened] = useState(false);
-
-  const formatIconName = (initialName: string) => {
-    return initialName.toLocaleLowerCase().split(/\.| /).join("");
-  };
 
   return (
     <div className={styles.container}>
@@ -66,7 +63,7 @@ export default function Dropdown({
                     platform
                   )}.svg)`,
                 }}
-              ></span>
+              />
               <p>{platform}</p>
             </div>
           );
