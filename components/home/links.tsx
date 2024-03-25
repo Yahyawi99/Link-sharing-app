@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useMain } from "@/context";
 import Image from "next/image";
 import Dropdown from "./dropdown";
-import styles from "@/styles/pages/home/links.module.css";
+import styles from "@/styles/components/home/links.module.css";
 
 export default function Links() {
   const { links, setLinks } = useMain();

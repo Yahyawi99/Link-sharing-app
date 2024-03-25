@@ -46,13 +46,20 @@ export async function saveLinks(
 
   data.forEach(async (platform) => {
     const { name, value } = platform;
-    const link = {
+    const linkData = {
       name,
       url: value,
       user: user._id,
     };
 
-    await Link.create(link);
+    const link = await Link.findOne({ name: linkData.name });
+
+    if (!link) {
+      await Link.create(linkData);
+    } else {
+      link.url = linkData.url;
+      link.save();
+    }
   });
 
   return { errors: [] };

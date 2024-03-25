@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Header from "./header";
+import Modal from "../shared/modal";
 import styles from "@/styles/pages/home/index.module.css";
 
 export default function Wrapper({ children }: { children: JSX.Element[] }) {
@@ -14,7 +15,10 @@ export default function Wrapper({ children }: { children: JSX.Element[] }) {
       <div className={styles.main}>
         {children[0]}
 
-        <div>{content === "links" ? children[1] : children[2]}</div>
+        <div>
+          {content === "links" ? children[1] : children[2]}
+          <Modal />
+        </div>
       </div>
     </main>
   );

@@ -6,7 +6,7 @@ import { SingleLink } from "@/interfaces/links";
 import { formatIconName } from "@/utils/format-icon-name";
 import Image from "next/image";
 import platforms from "@/data/platforrms.json";
-import styles from "@/styles/pages/home/dropdown.module.css";
+import styles from "@/styles/components/home/dropdown.module.css";
 
 export default function Dropdown({
   link,

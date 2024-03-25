@@ -23,5 +23,6 @@
 
 .main>div:nth-child(2) {
   flex: 1;
+  position: relative;
   padding: 50px;
 }

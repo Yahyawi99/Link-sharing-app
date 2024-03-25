@@ -3,7 +3,7 @@
 import { useMain } from "@/context";
 import { formatIconName } from "@/utils/format-icon-name";
 import Image from "next/image";
-import styles from "@/styles/pages/home/illustration.module.css";
+import styles from "@/styles/components/home/illustration.module.css";
 
 export default function PhoneIllustration() {
   const { links } = useMain();

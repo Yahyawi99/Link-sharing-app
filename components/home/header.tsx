@@ -3,7 +3,7 @@
 import { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
 import Logo from "@/components/shared/logo";
-import styles from "@/styles/pages/home/header.module.css";
+import styles from "@/styles/components/home/header.module.css";
 
 interface Props {
   content: string;
