@@ -7,7 +7,8 @@ import User from "@/models/User";
 import Link from "@/models/Link";
 
 interface FormState {
-  errors: string[];
+  errors?: string[];
+  success: boolean;
 }
 
 export async function saveLinks(
@@ -34,11 +35,11 @@ export async function saveLinks(
   }
 
   if (!isPlatformsReplicated(data)) {
-    return { errors: ["You cannot have duplicate platforms!"] };
+    return { errors: ["You cannot have duplicate platforms!"], success: false };
   }
 
   if (!isUrlValid(data)) {
-    return { errors: ["Please check for invalid URLs !"] };
+    return { errors: ["Please check for invalid URLs !"], success: false };
   }
 
   await connect();
@@ -62,5 +63,5 @@ export async function saveLinks(
     }
   });
 
-  return { errors: [] };
+  return { success: true };
 }

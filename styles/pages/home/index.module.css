@@ -24,5 +24,6 @@
 .main>div:nth-child(2) {
   flex: 1;
   position: relative;
+  overflow: hidden;
   padding: 50px;
 }

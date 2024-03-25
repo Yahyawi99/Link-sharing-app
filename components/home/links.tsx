@@ -10,11 +10,11 @@ import Dropdown from "./dropdown";
 import styles from "@/styles/components/home/links.module.css";
 
 export default function Links() {
-  const { links, setLinks } = useMain();
+  const { links, setLinks, animateShowModal } = useMain();
   const [userEmail, setUserEmail] = useState("");
   const [formState, action] = useFormState(
     actions.saveLinks.bind(null, userEmail),
-    { errors: [] }
+    { errors: [], success: false }
   );
 
   const revomeLink = (id: string) => {
@@ -29,6 +29,12 @@ export default function Links() {
       return [...prev, { id: uuidv4(), name: "Github", url: "" }];
     });
   };
+
+  useEffect(() => {
+    if (formState.success) {
+      animateShowModal();
+    }
+  }, [formState]);
 
   useEffect(() => {
     setUserEmail(localStorage.getItem("email") || "");
@@ -87,7 +93,7 @@ export default function Links() {
           >
             Save
           </button>
-          <p className={styles.error}>{formState.errors.join("")}</p>
+          <p className={styles.error}>{formState.errors?.join("")}</p>
         </div>
       </form>
     </div>

@@ -12,7 +12,10 @@ export const fetchUserLinks = async (email: string) => {
     const user = await User.findOne({ email });
     const links: LinkDatabase[] = (await Link.find({ user: user._id })) || [];
 
-    return links;
+    links.map((link) => {
+      return { id: link._id, name: link.name, url: link.url };
+    });
+    return;
   } catch (err) {
     console.log(err);
   }
