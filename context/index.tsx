@@ -16,6 +16,8 @@ interface ContextTypes {
   setLinks: Dispatch<SetStateAction<SingleLink[]>>;
   animateShowModal: () => void;
   showModal: boolean;
+  loading: boolean;
+  setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
 const AppContext = createContext<ContextTypes>({
@@ -23,6 +25,8 @@ const AppContext = createContext<ContextTypes>({
   setLinks: () => [],
   animateShowModal: () => {},
   showModal: false,
+  loading: false,
+  setLoading: () => {},
 });
 
 export default function MainContextProvider({
@@ -32,6 +36,7 @@ export default function MainContextProvider({
 }) {
   const [links, setLinks] = useState<SingleLink[]>([]);
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const getData = async () => {
     const userLinks = await fetchUserLinks(localStorage.getItem("email") || "");
@@ -42,7 +47,6 @@ export default function MainContextProvider({
   }, []);
 
   const animateShowModal = () => {
-    console.log("animate");
     setShowModal(true);
 
     setTimeout(() => {
@@ -57,6 +61,8 @@ export default function MainContextProvider({
         setLinks,
         animateShowModal,
         showModal,
+        loading,
+        setLoading,
       }}
     >
       {children}

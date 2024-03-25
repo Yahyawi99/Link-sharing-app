@@ -1,18 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import { useMain } from "@/context";
 import Header from "./header";
 import Modal from "../shared/modal";
 import styles from "@/styles/pages/home/index.module.css";
 
 export default function Wrapper({ children }: { children: JSX.Element[] }) {
+  const { loading } = useMain();
   const [content, setContent] = useState("links");
 
   return (
     <main className={styles.container}>
       <Header toggleContent={setContent} content={content} />
 
-      <div className={styles.main}>
+      <div className={`${styles.main} ${loading ? styles.isLoading : ""}`}>
         {children[0]}
 
         <div>

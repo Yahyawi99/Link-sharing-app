@@ -1,19 +1,19 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
 import { useEffect, useState } from "react";
+import { useMain } from "@/context";
 import Link from "next/link";
 import * as actions from "@/actions";
 import Logo from "@/components/shared/logo";
 import styles from "@/styles/pages/login/index.module.css";
 
 export default function Login() {
+  const { loading, setLoading } = useMain();
   const [formState, action] = useFormState(actions.login, {
     errors: {},
   });
   const [email, setEmail] = useState("");
-
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(false);

@@ -10,7 +10,7 @@ import Dropdown from "./dropdown";
 import styles from "@/styles/components/home/links.module.css";
 
 export default function Links() {
-  const { links, setLinks, animateShowModal } = useMain();
+  const { links, setLinks, animateShowModal, setLoading } = useMain();
   const [userEmail, setUserEmail] = useState("");
   const [formState, action] = useFormState(
     actions.saveLinks.bind(null, userEmail),
@@ -34,6 +34,7 @@ export default function Links() {
     if (formState.success) {
       animateShowModal();
     }
+    setLoading(false);
   }, [formState]);
 
   useEffect(() => {
@@ -56,7 +57,11 @@ export default function Links() {
         + Add new link
       </button>
 
-      <form action={action} className={styles.links}>
+      <form
+        className={styles.links}
+        action={action}
+        onSubmit={() => setLoading(true)}
+      >
         {links.length ? (
           links.map((link, i) => {
             return (
