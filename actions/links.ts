@@ -1,9 +1,10 @@
 "use server";
 
 import { PlatformLinks } from "@/interfaces";
-import { isUrlValid } from "@/utils/validUrls";
+import { isUrlValid, isPlatformsReplicated } from "@/utils";
 import connect from "@/db";
 import User from "@/models/User";
+import Link from "@/models/Link";
 
 interface FormState {
   errors: string[];
@@ -32,13 +33,27 @@ export async function saveLinks(
     i++;
   }
 
+  if (!isPlatformsReplicated(data)) {
+    return { errors: ["You cannot have duplicate platforms!"] };
+  }
+
   if (!isUrlValid(data)) {
-    return { errors: ["Check for invalid URLs !"] };
+    return { errors: ["Please check for invalid URLs !"] };
   }
 
   await connect();
   const user = await User.findOne({ email: userEmail });
-  console.log(user);
+
+  data.forEach(async (platform) => {
+    const { name, value } = platform;
+    const link = {
+      name,
+      url: value,
+      user: user._id,
+    };
+
+    await Link.create(link);
+  });
 
   return { errors: [] };
 }

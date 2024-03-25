@@ -24,7 +24,7 @@ let Link: mongoose.Model<any>;
 try {
   Link = mongoose.model("Link");
 } catch (error) {
-  Link = mongoose.model("User", LinkSchema);
+  Link = mongoose.model("Link", LinkSchema);
 }
 
 export default Link;
