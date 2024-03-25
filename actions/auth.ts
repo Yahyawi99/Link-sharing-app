@@ -1,7 +1,8 @@
 "use server";
 
 import connect from "@/db";
-import User, { UserDocument } from "@/models/User";
+import User from "@/models/User";
+import type { UserDocument } from "@/interfaces/user";
 import { createToken, attachCookieToResponse } from "@/utils";
 import { object, string } from "zod";
 import { redirect } from "next/navigation";

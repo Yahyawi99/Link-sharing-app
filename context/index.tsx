@@ -6,8 +6,10 @@ import {
   createContext,
   useContext,
   useState,
+  useEffect,
 } from "react";
-import { SingleLink } from "@/interfaces/links";
+import { SingleLink, LinkDatabase } from "@/interfaces/links";
+import { fetchUserLinks } from "@/db/links";
 
 interface ContextTypes {
   links: SingleLink[];
@@ -25,6 +27,15 @@ export default function MainContextProvider({
   children: React.ReactNode;
 }) {
   const [links, setLinks] = useState<SingleLink[]>([]);
+
+  const getData = async () => {
+    const userLinks = await fetchUserLinks(localStorage.getItem("email") || "");
+    console.log(userLinks);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <AppContext.Provider
