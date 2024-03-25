@@ -36,10 +36,13 @@ export default function MainContextProvider({
 }) {
   const [links, setLinks] = useState<SingleLink[]>([]);
   const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const getData = async () => {
-    const userLinks = await fetchUserLinks(localStorage.getItem("email") || "");
+    let userLinks =
+      (await fetchUserLinks(localStorage.getItem("email") || "")) || [];
+
+    setLinks(userLinks);
   };
 
   useEffect(() => {

@@ -53,14 +53,9 @@ export async function saveLinks(
       user: user._id,
     };
 
-    const link = await Link.findOne({ name: linkData.name });
+    await Link.deleteMany({ user: user._id });
 
-    if (!link) {
-      await Link.create(linkData);
-    } else {
-      link.url = linkData.url;
-      link.save();
-    }
+    await Link.create(linkData);
   });
 
   return { success: true };

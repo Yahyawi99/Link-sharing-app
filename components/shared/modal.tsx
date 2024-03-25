@@ -3,14 +3,9 @@
 import Image from "next/image";
 import { useMain } from "@/context";
 import styles from "@/styles/components/shared/modal.module.css";
-import { useEffect } from "react";
 
 export default function Modal() {
   const { showModal } = useMain();
-
-  useEffect(() => {
-    console.log(showModal);
-  }, [showModal]);
 
   return (
     <div className={`${styles.container} ${showModal ? styles.showModal : ""}`}>

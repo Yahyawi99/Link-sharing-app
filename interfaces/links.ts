@@ -12,7 +12,7 @@ export interface SingleLink {
 }
 
 export interface LinkDatabase {
-  _id: string;
+  id: string;
   name: string;
   url: string;
   user: UserDocument;

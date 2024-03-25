@@ -75,15 +75,7 @@ export default function Links() {
 
                 <Dropdown link={link} num={i + 1} />
 
-                <div>
-                  <label htmlFor={`url${i + 1}`}>Link</label>
-                  <input
-                    type="text"
-                    id={`url${i + 1}`}
-                    name={`url${i + 1}`}
-                    placeholder="e.g., https://www.example.com/username"
-                  />
-                </div>
+                <UrlInput url={link.url} n={i + 1} />
               </div>
             );
           })
@@ -101,6 +93,23 @@ export default function Links() {
           <p className={styles.error}>{formState.errors?.join("")}</p>
         </div>
       </form>
+    </div>
+  );
+}
+
+function UrlInput({ url, n }: { url: string; n: number }) {
+  const [urlValue, setUrlValue] = useState(url);
+  return (
+    <div>
+      <label htmlFor={`url${n}`}>Link</label>
+      <input
+        type="text"
+        id={`url${n}`}
+        name={`url${n}`}
+        value={urlValue}
+        onChange={(e) => setUrlValue(e.currentTarget.value)}
+        placeholder="e.g., https://www.example.com/username"
+      />
     </div>
   );
 }
