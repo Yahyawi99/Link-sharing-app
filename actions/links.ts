@@ -34,16 +34,18 @@ export async function saveLinks(
     i++;
   }
 
-  if (!isPlatformsReplicated(data)) {
+  if (data.length && !isPlatformsReplicated(data)) {
     return { errors: ["You cannot have duplicate platforms!"], success: false };
   }
 
-  if (!isUrlValid(data)) {
+  if (data.length && !isUrlValid(data)) {
     return { errors: ["Please check for invalid URLs !"], success: false };
   }
 
   await connect();
   const user = await User.findOne({ email: userEmail });
+
+  await Link.deleteMany({ user: user._id });
 
   data.forEach(async (platform) => {
     const { name, value } = platform;
@@ -52,8 +54,6 @@ export async function saveLinks(
       url: value,
       user: user._id,
     };
-
-    await Link.deleteMany({ user: user._id });
 
     await Link.create(linkData);
   });

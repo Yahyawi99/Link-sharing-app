@@ -84,12 +84,7 @@ export default function Links() {
         )}
 
         <div className={styles.submitBtn}>
-          <button
-            className={links.length === 0 ? styles.disableBtn : ""}
-            type="submit"
-          >
-            Save
-          </button>
+          <button type="submit">Save</button>
           <p className={styles.error}>{formState.errors?.join("")}</p>
         </div>
       </form>
