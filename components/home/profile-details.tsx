@@ -17,25 +17,39 @@ export default async function ProfileDetails() {
 
         <div>
           <div>
-            <label htmlFor="">
+            <label htmlFor="firstName">
               First name
               <span>*</span>
             </label>
-            <input type="text" name="firstName" placeholder="e.g Yassin" />
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="e.g Yassin"
+            />
           </div>
 
           <div>
-            <label htmlFor="">Last name</label>
-            <input type="text" name="lastName" placeholder="e.g Yahyawi" />
+            <label htmlFor="lastName">
+              Last name
+              <span>*</span>
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="e.g Yahyawi"
+            />
           </div>
 
           <div>
-            <label htmlFor="">
+            <label htmlFor="email">
               Email
               <span>*</span>
             </label>
             <input
               type="text"
+              id="email"
               name="email"
               placeholder="e.g yassin@gmail.com"
             />
