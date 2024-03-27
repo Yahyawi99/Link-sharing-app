@@ -36,7 +36,7 @@ export default function MainContextProvider({
 }) {
   const [links, setLinks] = useState<SingleLink[]>([]);
   const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const getData = async () => {
     let userLinks =

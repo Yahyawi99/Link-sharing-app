@@ -21,7 +21,10 @@ export default function Header({ toggleContent, content }: Props) {
       <div>
         <button
           className={content === "links" ? styles.active : ""}
-          onClick={() => toggleContent("links")}
+          onClick={() => {
+            toggleContent("links");
+            localStorage.setItem("content", "links");
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +43,10 @@ export default function Header({ toggleContent, content }: Props) {
 
         <button
           className={content === "profile" ? styles.active : ""}
-          onClick={() => toggleContent("profile")}
+          onClick={() => {
+            toggleContent("profile");
+            localStorage.setItem("content", "profile");
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

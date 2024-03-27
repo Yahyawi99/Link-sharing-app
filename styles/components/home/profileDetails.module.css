@@ -1,0 +1,61 @@
+.profileDetailsContainer>h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.profileDetailsContainer>p {
+  color: var(--grey);
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+/* ================Form================ */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form>div:not(:last-child) {
+  display: flex;
+  background-color: var(--purple-light);
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.form>div:nth-child(1) {
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.form>div:nth-child(1)>p:nth-child(3) {
+  max-width: 150px;
+  line-height: 25px;
+}
+
+/* inputs */
+.form>div:nth-child(2) {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form>div:nth-child(2)>div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form>div:nth-child(2) label {
+  width: 70px;
+  display: flex;
+  gap: 5px;
+}
+
+.form>div:nth-child(2) input {
+  flex: 1;
+  height: 40px;
+  font-size: 1rem;
+  border: 2px solid var(--light-grey);
+  border-radius: 5px;
+  padding-left: 10px;
+}

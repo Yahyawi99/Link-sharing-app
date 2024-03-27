@@ -6,7 +6,7 @@ export default async function ProfileDetails() {
       <h1>Profile Details</h1>
       <p>Add your details to create a personal touch to your profile.</p>
 
-      <form action="">
+      <form action="" className={styles.form}>
         <div>
           <p>Profile picture</p>
 
