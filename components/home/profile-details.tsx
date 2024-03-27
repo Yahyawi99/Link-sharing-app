@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "@/styles/components/home/profileDetails.module.css";
 
 export default async function ProfileDetails() {
@@ -8,9 +9,24 @@ export default async function ProfileDetails() {
 
       <form action="" className={styles.form}>
         <div>
-          <p>Profile picture</p>
+          <label htmlFor="avatar">Profile picture</label>
 
-          <input type="file" accept=".png, .jpg, .jpeg" name="avatar" />
+          <div className={styles.fileInput}>
+            <input
+              type="file"
+              id="avatar"
+              accept=".png, .jpg, .jpeg"
+              name="avatar"
+            />
+
+            <Image
+              src="/icons/icon-upload-image.svg"
+              alt="upload"
+              width={30}
+              height={30}
+            />
+            <p>+ Upload Image</p>
+          </div>
 
           <p>Image must be below 1024x1024px. Use PNG or JPG format.</p>
         </div>

@@ -1,6 +1,4 @@
-"use client";
-
-import { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
 import Logo from "@/components/shared/logo";
 import styles from "@/styles/components/home/header.module.css";
