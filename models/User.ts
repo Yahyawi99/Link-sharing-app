@@ -7,14 +7,14 @@ const UserSchema = new mongoose.Schema(
       type: String,
       minlength: 3,
       maxlength: 100,
-      require: [true, "Please provide a username"],
+      default: null,
     },
 
     lastName: {
       type: String,
       minlength: 3,
       maxlength: 100,
-      require: [true, "Please provide a username"],
+      default: null,
     },
 
     avatar: {
