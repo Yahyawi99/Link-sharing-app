@@ -1,13 +1,20 @@
+import { useFormState } from "react-dom";
+import * as actions from "@/actions";
 import Image from "next/image";
 import styles from "@/styles/components/home/profileDetails.module.css";
 
 export default async function ProfileDetails() {
+  // const [formState, action] = useFormState(actions.saveProfileDetails, {
+  //   errors: [],
+  //   success: false,
+  // });
+
   return (
     <div className={styles.profileDetailsContainer}>
       <h1>Profile Details</h1>
       <p>Add your details to create a personal touch to your profile.</p>
 
-      <form action="" className={styles.form}>
+      <form action={actions.saveProfileDetails} className={styles.form}>
         <div>
           <label htmlFor="avatar">Profile picture</label>
 
