@@ -14,20 +14,6 @@ const loginShema = object({
   }),
 });
 
-const signupShema = object({
-  username: string()
-    .min(3, {
-      message: "Username must contain at least 3 character(s)",
-    })
-    .max(10, {
-      message: "Username mustn't be more than 10 character(s)",
-    }),
-  email: string().email(),
-  password: string().min(8, {
-    message: "Password must contain at least 8 character(s)",
-  }),
-});
-
 interface AuthFormState {
   errors: {
     username?: string[];
@@ -72,6 +58,20 @@ export async function login(
 }
 
 // ====================Signup====================
+const signupShema = object({
+  username: string()
+    .min(3, {
+      message: "Username must contain at least 3 character(s)",
+    })
+    .max(10, {
+      message: "Username mustn't be more than 10 character(s)",
+    }),
+  email: string().email(),
+  password: string().min(8, {
+    message: "Password must contain at least 8 character(s)",
+  }),
+});
+
 export async function signup(
   formState: AuthFormState,
   formData: FormData

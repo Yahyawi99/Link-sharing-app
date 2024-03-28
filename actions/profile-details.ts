@@ -71,15 +71,12 @@ export async function saveProfileDetails(formData: FormData) {
 
   const validationResult = mySchema.safeParse(data);
 
-  console.log(validationResult);
-
-  //  for (let i = 0; i < platformsAndUrls.length; i++) {
-  //    data.push({
-  //      name: platformsAndUrls[i][1],
-  //      value: platformsAndUrls[i + 1][1],
-  //    });
-  //    i++;
-  //  }
+  if (!validationResult.success) {
+    return {
+      errors: validationResult.error.flatten().fieldErrors,
+      success: false,
+    };
+  }
 
   return { success: true };
 }
