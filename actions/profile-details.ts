@@ -1,6 +1,8 @@
 "use server";
 
-import { number, object, string, union } from "zod";
+import connect from "@/db";
+import User from "@/models/User";
+import { object, string } from "zod";
 
 // interface FormState {
 //   errors?: string[];
@@ -11,6 +13,12 @@ interface ProfileDetails {
   firstName: string;
   lastName: string;
   email: string;
+}
+
+interface FileInput {
+  size: number;
+  type: string;
+  name: string;
 }
 
 const mySchema = object({
@@ -45,8 +53,7 @@ export async function saveProfileDetails(formData: FormData) {
   const firstName = formData.get("firstName");
   const lastName = formData.get("lastName");
   const email = formData.get("email");
-  const avatar = formData.get("avatar");
-
+  const avatar = formData.get("avatar") as FileInput;
   const data = {
     firstName,
     lastName,
@@ -64,7 +71,29 @@ export async function saveProfileDetails(formData: FormData) {
     };
   }
 
-  console.log("success");
+  try {
+    await connect();
+    const user = await User.findOne({ email: data.email });
+
+    if (!user) {
+      return {
+        errors: { _auth: ["User doesn't existe"] },
+      };
+    }
+
+    user.firstName = firstName;
+    user.lastName = lastName;
+    user.email = email;
+
+    if (avatar.size > 0) {
+    }
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      return {
+        errors: { _auth: [err.message] },
+      };
+    }
+  }
 
   return { success: true };
 }

@@ -96,7 +96,7 @@ export async function signup(
 
     if (user) {
       return {
-        errors: { _auth: ["You're already signed in!"] },
+        errors: { _auth: ["Email already existe!"] },
       };
     }
     await User.create(data);
