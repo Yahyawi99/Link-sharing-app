@@ -21,20 +21,6 @@ const mySchema = object({
     message: "Last name must contain at least 3 character(s)",
   }),
   email: string().email(),
-
-  avatar: union([
-    string(),
-    object({
-      size: number(),
-      type: string(),
-      name: string(),
-      value: string(),
-    }).refine((value) => {
-      if (typeof value.name === "undefined") {
-        return false;
-      }
-    }),
-  ]),
 });
 
 /*
@@ -56,7 +42,6 @@ const mySchema = object({
 */
 
 export async function saveProfileDetails(formData: FormData) {
-  console.log(Array.from(formData.entries()));
   const firstName = formData.get("firstName");
   const lastName = formData.get("lastName");
   const email = formData.get("email");
@@ -72,11 +57,14 @@ export async function saveProfileDetails(formData: FormData) {
   const validationResult = mySchema.safeParse(data);
 
   if (!validationResult.success) {
+    console.log(validationResult.error.flatten().fieldErrors);
     return {
       errors: validationResult.error.flatten().fieldErrors,
       success: false,
     };
   }
+
+  console.log("success");
 
   return { success: true };
 }

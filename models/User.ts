@@ -1,4 +1,4 @@
-import mongoose, { Document } from "mongoose";
+import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
 const UserSchema = new mongoose.Schema(
@@ -17,9 +17,15 @@ const UserSchema = new mongoose.Schema(
       default: null,
     },
 
+    username: {
+      type: String,
+      minlength: 3,
+      maxlength: 100,
+      require: [true, "Username is required"],
+    },
+
     avatar: {
       type: String,
-      require: [true, "Please provide a username"],
       default: null,
     },
 

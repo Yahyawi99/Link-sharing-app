@@ -37,36 +37,6 @@ export default function Signup() {
             {formState.errors._auth?.join(", ")}
           </p>
 
-          {/* <div>
-            <label htmlFor="firstName">
-              First Name <span>*</span>
-            </label>
-            <input
-              type="text"
-              name="firstName"
-              id="firstName"
-              placeholder="e.g. yassin"
-            />
-            <p className={styles.errorMsg}>
-              {formState.errors.username?.join(", ")}
-            </p>
-          </div>
-
-          <div>
-            <label htmlFor="lastName">
-              Last Name <span>*</span>
-            </label>
-            <input
-              type="text"
-              name="lastName"
-              id="lastName"
-              placeholder="e.g. yahaywi"
-            />
-            <p className={styles.errorMsg}>
-              {formState.errors.username?.join(", ")}
-            </p>
-          </div> */}
-
           <div>
             <label htmlFor="username">
               Username <span>*</span>
