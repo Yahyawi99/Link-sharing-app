@@ -1,13 +1,21 @@
-import { useFormState } from "react-dom";
+"use client";
+import { useEffect, useState } from "react";
+import path from "path";
+import fs from "fs-extra";
 import * as actions from "@/actions";
 import Image from "next/image";
 import styles from "@/styles/components/home/profileDetails.module.css";
 
-export default async function ProfileDetails() {
-  // const [formState, action] = useFormState(actions.saveProfileDetails, {
-  //   errors: [],
-  //   success: false,
-  // });
+export default function ProfileDetails() {
+  const [inputFileValue, setInputFileValue] = useState("");
+  const [avatarPath, setAvatarPath] = useState("");
+
+  useEffect(() => {
+    if (inputFileValue) {
+      const name = inputFileValue.split("\\")[2].split(" ").join("-");
+      setAvatarPath(name);
+    }
+  }, [inputFileValue]);
 
   return (
     <div className={styles.profileDetailsContainer}>
@@ -22,17 +30,24 @@ export default async function ProfileDetails() {
             <input
               type="file"
               id="avatar"
-              accept=".png, .jpg, .jpeg"
               name="avatar"
+              accept=".png, .jpg, .jpeg"
+              onChange={(e) => setInputFileValue(e.currentTarget.value)}
             />
 
-            <Image
-              src="/icons/icon-upload-image.svg"
-              alt="upload"
-              width={30}
-              height={30}
-            />
-            <p>+ Upload Image</p>
+            {avatarPath ? (
+              <p className={styles.uploadName}>{avatarPath}</p>
+            ) : (
+              <>
+                <Image
+                  src="/icons/icon-upload-image.svg"
+                  alt="upload"
+                  width={30}
+                  height={30}
+                />
+                <p>+ Upload Image</p>
+              </>
+            )}
           </div>
 
           <p>Image must be below 1024x1024px. Use PNG or JPG format.</p>

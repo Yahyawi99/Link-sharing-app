@@ -68,6 +68,13 @@
   font-weight: 600;
 }
 
+.form>div:nth-child(1) .uploadName {
+  display: block;
+  color: var(--purple);
+  text-align: center;
+  font-weight: 600;
+}
+
 /* inputs */
 .form>div:nth-child(2) {
   flex-direction: column;

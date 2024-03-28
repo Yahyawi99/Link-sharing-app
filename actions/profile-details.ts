@@ -2,24 +2,22 @@
 
 import connect from "@/db";
 import User from "@/models/User";
+import fs from "fs";
+import path from "path";
 import { object, string } from "zod";
 
-// interface FormState {
-//   errors?: string[];
-//   success: boolean;
+// interface ProfileDetails {
+//   avatar: File | string;
+//   firstName: string;
+//   lastName: string;
+//   email: string;
 // }
-interface ProfileDetails {
-  avatar: File | string;
-  firstName: string;
-  lastName: string;
-  email: string;
-}
 
-interface FileInput {
-  size: number;
-  type: string;
-  name: string;
-}
+// interface FileInput {
+//   size: number;
+//   type: string;
+//   name: string;
+// }
 
 const mySchema = object({
   firstName: string().min(3, {
@@ -31,29 +29,11 @@ const mySchema = object({
   email: string().email(),
 });
 
-/*
-[
-  [
-    'avatar',
-    File {
-      size: 0,
-      type: 'application/octet-stream',
-      name: 'undefined',
-      lastModified: 1711637888750
-    }
-  ],
-  [ 'firstName', 'Yassin' ],
-  [ 'lastName', 'Yahyawi' ],
-  [ 'email', 'yassin@gmail.com' ]
-]
-
-*/
-
 export async function saveProfileDetails(formData: FormData) {
   const firstName = formData.get("firstName");
   const lastName = formData.get("lastName");
   const email = formData.get("email");
-  const avatar = formData.get("avatar") as FileInput;
+  const avatar = formData.get("avatar") as File;
   const data = {
     firstName,
     lastName,
@@ -86,6 +66,16 @@ export async function saveProfileDetails(formData: FormData) {
     user.email = email;
 
     if (avatar.size > 0) {
+      const bytes = await avatar.arrayBuffer();
+      const fileBuffer = Buffer.from(bytes);
+      const fileName = avatar.name.split(" ").join("-");
+
+      const uploadDir = path.join(process.cwd(), "public/uploads");
+      const filePath = path.join(uploadDir, fileName);
+
+      fs.writeFileSync(filePath, fileBuffer);
+
+      user.avatar = filePath;
     }
   } catch (err: unknown) {
     if (err instanceof Error) {
