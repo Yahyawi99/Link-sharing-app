@@ -78,6 +78,8 @@ export async function saveProfileDetails(
 
       user.avatar = filePath;
     }
+
+    await user.save();
   } catch (err: unknown) {
     if (err instanceof Error) {
       return {

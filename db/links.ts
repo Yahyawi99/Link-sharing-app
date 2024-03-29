@@ -8,9 +8,9 @@ import { LinkDatabase, SingleLink } from "@/interfaces/links";
 export const fetchUserLinks = async (
   email: string
 ): Promise<SingleLink[] | undefined> => {
-  await connect();
-
   try {
+    await connect();
+
     const user = await User.findOne({ email });
     const links: LinkDatabase[] = (await Link.find({ user: user._id })) || [];
 

@@ -6,7 +6,7 @@ import Image from "next/image";
 import styles from "@/styles/components/home/illustration.module.css";
 
 export default function PhoneIllustration() {
-  const { links } = useMain();
+  const { links, user } = useMain();
 
   return (
     <div className={styles.container}>
@@ -20,15 +20,23 @@ export default function PhoneIllustration() {
 
         <div>
           <div className={styles.user}>
-            <Image
-              src="/images/placeholder-image.png"
-              alt="user"
-              width={75}
-              height={75}
-            />
+            {
+              <Image
+                src={user.avatar || ""}
+                alt="user"
+                width={75}
+                height={75}
+                style={{
+                  opacity: 0,
+                }}
+                className={user.avatar || styles.noImg}
+              />
+            }
 
-            <p>Yassin</p>
-            <p>yassin@gmail.com</p>
+            {user.firstName && user.lastName && (
+              <p>{user.firstName + " " + user.lastName}</p>
+            )}
+            {user.email && <p>{user.email}</p>}
           </div>
 
           <div className={styles.links}>

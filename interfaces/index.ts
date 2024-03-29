@@ -1,1 +1,2 @@
-export type { PlatformLinks } from "./links";
+export type * from "./links";
+export type * from "./user";

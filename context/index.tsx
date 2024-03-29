@@ -8,8 +8,10 @@ import {
   useState,
   useEffect,
 } from "react";
-import { SingleLink, LinkDatabase } from "@/interfaces/links";
+import { SingleLink } from "@/interfaces/links";
 import { fetchUserLinks } from "@/db/links";
+import { fetchUser } from "@/db/user";
+import { UserDocument } from "@/interfaces";
 
 interface ContextTypes {
   links: SingleLink[];
@@ -18,6 +20,7 @@ interface ContextTypes {
   showModal: boolean;
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
+  user: UserDocument;
 }
 
 const AppContext = createContext<ContextTypes>({
@@ -27,6 +30,7 @@ const AppContext = createContext<ContextTypes>({
   showModal: false,
   loading: false,
   setLoading: () => {},
+  user: {},
 });
 
 export default function MainContextProvider({
@@ -35,14 +39,19 @@ export default function MainContextProvider({
   children: React.ReactNode;
 }) {
   const [links, setLinks] = useState<SingleLink[]>([]);
+  const [user, setUser] = useState<UserDocument>({});
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const getData = async () => {
-    let userLinks =
+    const userLinks =
       (await fetchUserLinks(localStorage.getItem("email") || "")) || [];
-
     setLinks(userLinks);
+
+    const user = (await fetchUser(
+      localStorage.getItem("email") || ""
+    )) as UserDocument;
+    setUser(user);
   };
 
   useEffect(() => {
@@ -66,6 +75,7 @@ export default function MainContextProvider({
         showModal,
         loading,
         setLoading,
+        user,
       }}
     >
       {children}

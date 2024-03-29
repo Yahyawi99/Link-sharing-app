@@ -1,8 +1,8 @@
-export interface UserDocument extends Document {
+export interface UserDocument {
   firstName?: string;
   lastName?: string;
   avatar?: string;
-  username: string;
-  email: string;
-  password: string;
+  username?: string;
+  email?: string;
+  password?: string;
 }
