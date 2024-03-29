@@ -1,12 +1,17 @@
 "use client";
 
+import { useEffect } from "react";
 import { useMain } from "@/context";
 import { formatIconName } from "@/utils/format-icon-name";
 import Image from "next/image";
 import styles from "@/styles/components/home/illustration.module.css";
 
 export default function PhoneIllustration() {
-  const { links, user } = useMain();
+  const { links, user, getData } = useMain();
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div className={styles.container}>

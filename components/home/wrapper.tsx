@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useMain } from "@/context";
 import Header from "./header";
 import Modal from "../shared/modal";

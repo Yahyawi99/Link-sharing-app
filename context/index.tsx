@@ -22,6 +22,7 @@ interface ContextTypes {
   setLoading: Dispatch<SetStateAction<boolean>>;
   user: UserDocument;
   setUser: Dispatch<SetStateAction<UserDocument>>;
+  getData: () => void;
 }
 
 const AppContext = createContext<ContextTypes>({
@@ -33,6 +34,7 @@ const AppContext = createContext<ContextTypes>({
   setLoading: () => {},
   user: {},
   setUser: () => {},
+  getData: () => {},
 });
 
 export default function MainContextProvider({
@@ -43,7 +45,7 @@ export default function MainContextProvider({
   const [links, setLinks] = useState<SingleLink[]>([]);
   const [user, setUser] = useState<UserDocument>({});
   const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const getData = async () => {
     const userLinks =
@@ -54,6 +56,8 @@ export default function MainContextProvider({
       localStorage.getItem("email") || ""
     )) as UserDocument;
     setUser(user);
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -79,6 +83,7 @@ export default function MainContextProvider({
         setLoading,
         user,
         setUser,
+        getData,
       }}
     >
       {children}
