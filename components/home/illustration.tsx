@@ -26,12 +26,13 @@ export default function PhoneIllustration() {
         <div>
           <div className={styles.user}>
             <Image
-              src={user.avatar ? `/uploads/${user.avatar}` : ""}
+              src={`/uploads/${user.avatar}`}
               alt="user"
               width={75}
               height={75}
               className={user.avatar ? "" : styles.notAdded}
             />
+
             <p
               className={user.firstName && user.lastName ? "" : styles.notAdded}
             >
