@@ -1,11 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useMain } from "@/context";
 import { useFormState } from "react-dom";
 import * as actions from "@/actions";
 import Image from "next/image";
 import styles from "@/styles/components/home/profileDetails.module.css";
 
 export default function ProfileDetails() {
+  const { setUser, user } = useMain();
   const [inputFileValue, setInputFileValue] = useState("");
   const [avatarPath, setAvatarPath] = useState("");
   const [formState, action] = useFormState(actions.saveProfileDetails, {
@@ -35,6 +37,7 @@ export default function ProfileDetails() {
               id="avatar"
               name="avatar"
               accept=".png, .jpg, .jpeg"
+              value={inputFileValue}
               onChange={(e) => setInputFileValue(e.currentTarget.value)}
             />
 
@@ -67,6 +70,10 @@ export default function ProfileDetails() {
               id="firstName"
               name="firstName"
               placeholder="e.g Yassin"
+              value={user.firstName}
+              onChange={(e) =>
+                setUser({ ...user, firstName: e.currentTarget.value })
+              }
             />
             <p className={styles.error}>
               {formState.errors.firstName?.join(", ")}
@@ -83,6 +90,10 @@ export default function ProfileDetails() {
               id="lastName"
               name="lastName"
               placeholder="e.g Yahyawi"
+              value={user.lastName}
+              onChange={(e) =>
+                setUser({ ...user, lastName: e.currentTarget.value })
+              }
             />
             <p className={styles.error}>
               {formState.errors.lastName?.join(", ")}
@@ -99,6 +110,10 @@ export default function ProfileDetails() {
               id="email"
               name="email"
               placeholder="e.g yassin@gmail.com"
+              value={user.email}
+              onChange={(e) =>
+                setUser({ ...user, email: e.currentTarget.value })
+              }
             />
             <p className={styles.error}>{formState.errors.email?.join(", ")}</p>
           </div>

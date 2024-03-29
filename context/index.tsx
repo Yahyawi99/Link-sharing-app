@@ -21,6 +21,7 @@ interface ContextTypes {
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
   user: UserDocument;
+  setUser: Dispatch<SetStateAction<UserDocument>>;
 }
 
 const AppContext = createContext<ContextTypes>({
@@ -31,6 +32,7 @@ const AppContext = createContext<ContextTypes>({
   loading: false,
   setLoading: () => {},
   user: {},
+  setUser: () => {},
 });
 
 export default function MainContextProvider({
@@ -76,6 +78,7 @@ export default function MainContextProvider({
         loading,
         setLoading,
         user,
+        setUser,
       }}
     >
       {children}
