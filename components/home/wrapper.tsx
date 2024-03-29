@@ -10,10 +10,6 @@ export default function Wrapper({ children }: { children: JSX.Element[] }) {
   const { loading } = useMain();
   const [content, setContent] = useState("links");
 
-  useEffect(() => {
-    setContent(localStorage.getItem("content") || "links");
-  }, []);
-
   return (
     <main className={styles.container}>
       <Header toggleContent={setContent} content={content} />

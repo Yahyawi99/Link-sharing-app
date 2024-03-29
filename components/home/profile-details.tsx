@@ -2,12 +2,13 @@
 import { useEffect, useState } from "react";
 import { useMain } from "@/context";
 import { useFormState } from "react-dom";
+
 import * as actions from "@/actions";
 import Image from "next/image";
 import styles from "@/styles/components/home/profileDetails.module.css";
 
 export default function ProfileDetails() {
-  const { setUser, user } = useMain();
+  const { setUser, user, setLoading, animateShowModal } = useMain();
   const [inputFileValue, setInputFileValue] = useState("");
   const [avatarPath, setAvatarPath] = useState("");
   const [formState, action] = useFormState(actions.saveProfileDetails, {
@@ -22,12 +23,23 @@ export default function ProfileDetails() {
     }
   }, [inputFileValue]);
 
+  useEffect(() => {
+    if (formState.success) {
+      animateShowModal();
+    }
+    setLoading(false);
+  }, [formState]);
+
   return (
     <div className={styles.profileDetailsContainer}>
       <h1>Profile Details</h1>
       <p>Add your details to create a personal touch to your profile.</p>
 
-      <form action={action} className={styles.form}>
+      <form
+        action={action}
+        onSubmit={() => setLoading(true)}
+        className={styles.form}
+      >
         <div>
           <label htmlFor="avatar">Profile picture</label>
 
