@@ -84,6 +84,7 @@
 .form>div:nth-child(2)>div {
   display: flex;
   align-items: center;
+  position: relative;
   gap: 10px;
 }
 
@@ -130,4 +131,19 @@
 
 .submitBtn button:hover {
   background-color: var(--purple-hover);
+}
+
+.error {
+  width: 100%;
+  color: var(--red);
+  font-size: .8rem;
+  font-weight: 600;
+  position: absolute;
+  bottom: -18px;
+  text-align: center;
+}
+
+.submitBtn .error {
+  bottom: 25px;
+  font-size: 1.1rem;
 }

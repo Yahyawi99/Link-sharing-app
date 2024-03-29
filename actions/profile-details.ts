@@ -6,18 +6,15 @@ import fs from "fs";
 import path from "path";
 import { object, string } from "zod";
 
-// interface ProfileDetails {
-//   avatar: File | string;
-//   firstName: string;
-//   lastName: string;
-//   email: string;
-// }
-
-// interface FileInput {
-//   size: number;
-//   type: string;
-//   name: string;
-// }
+interface FormState {
+  errors: {
+    firstName?: string[];
+    lastName?: string[];
+    email?: string[];
+    _auth?: string[];
+  };
+  success: boolean;
+}
 
 const mySchema = object({
   firstName: string().min(3, {
@@ -29,7 +26,10 @@ const mySchema = object({
   email: string().email(),
 });
 
-export async function saveProfileDetails(formData: FormData) {
+export async function saveProfileDetails(
+  formState: FormState,
+  formData: FormData
+): Promise<FormState> {
   const firstName = formData.get("firstName");
   const lastName = formData.get("lastName");
   const email = formData.get("email");
@@ -58,6 +58,7 @@ export async function saveProfileDetails(formData: FormData) {
     if (!user) {
       return {
         errors: { _auth: ["User doesn't existe"] },
+        success: false,
       };
     }
 
@@ -81,9 +82,10 @@ export async function saveProfileDetails(formData: FormData) {
     if (err instanceof Error) {
       return {
         errors: { _auth: [err.message] },
+        success: false,
       };
     }
   }
 
-  return { success: true };
+  return { errors: {}, success: true };
 }

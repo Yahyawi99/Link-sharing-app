@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import path from "path";
-import fs from "fs-extra";
+import { useFormState } from "react-dom";
 import * as actions from "@/actions";
 import Image from "next/image";
 import styles from "@/styles/components/home/profileDetails.module.css";
@@ -9,6 +8,10 @@ import styles from "@/styles/components/home/profileDetails.module.css";
 export default function ProfileDetails() {
   const [inputFileValue, setInputFileValue] = useState("");
   const [avatarPath, setAvatarPath] = useState("");
+  const [formState, action] = useFormState(actions.saveProfileDetails, {
+    errors: {},
+    success: false,
+  });
 
   useEffect(() => {
     if (inputFileValue) {
@@ -22,7 +25,7 @@ export default function ProfileDetails() {
       <h1>Profile Details</h1>
       <p>Add your details to create a personal touch to your profile.</p>
 
-      <form action={actions.saveProfileDetails} className={styles.form}>
+      <form action={action} className={styles.form}>
         <div>
           <label htmlFor="avatar">Profile picture</label>
 
@@ -65,6 +68,9 @@ export default function ProfileDetails() {
               name="firstName"
               placeholder="e.g Yassin"
             />
+            <p className={styles.error}>
+              {formState.errors.firstName?.join(", ")}
+            </p>
           </div>
 
           <div>
@@ -78,6 +84,9 @@ export default function ProfileDetails() {
               name="lastName"
               placeholder="e.g Yahyawi"
             />
+            <p className={styles.error}>
+              {formState.errors.lastName?.join(", ")}
+            </p>
           </div>
 
           <div>
@@ -91,12 +100,13 @@ export default function ProfileDetails() {
               name="email"
               placeholder="e.g yassin@gmail.com"
             />
+            <p className={styles.error}>{formState.errors.email?.join(", ")}</p>
           </div>
         </div>
 
         <div className={styles.submitBtn}>
           <button type="submit">Save</button>
-          {/* <p className={styles.error}>{formState.errors?.join("")}</p> */}
+          <p className={styles.error}>{formState.errors._auth?.join(", ")}</p>
         </div>
       </form>
     </div>
