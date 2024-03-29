@@ -76,7 +76,7 @@ export async function saveProfileDetails(
 
       fs.writeFileSync(filePath, fileBuffer);
 
-      user.avatar = filePath;
+      user.avatar = fileName;
     }
 
     await user.save();

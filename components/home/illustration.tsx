@@ -22,21 +22,26 @@ export default function PhoneIllustration() {
           <div className={styles.user}>
             {
               <Image
-                src={user.avatar || ""}
+                src={user.avatar ? `/uploads/${user.avatar}` : ""}
                 alt="user"
                 width={75}
                 height={75}
-                style={{
-                  opacity: 0,
-                }}
-                className={user.avatar || styles.noImg}
+                className={user.avatar ? "" : styles.notAdded}
               />
             }
 
             {user.firstName && user.lastName && (
-              <p>{user.firstName + " " + user.lastName}</p>
+              <p
+                className={
+                  user.firstName && user.lastName ? "" : styles.notAdded
+                }
+              >
+                {user.firstName + " " + user.lastName}
+              </p>
             )}
-            {user.email && <p>{user.email}</p>}
+            {user.email && (
+              <p className={user.email ? "" : styles.notAdded}>{user.email}</p>
+            )}
           </div>
 
           <div className={styles.links}>

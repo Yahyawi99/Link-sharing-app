@@ -90,3 +90,7 @@
 .links .frontendmentor svg path {
   fill: var(--frontendmentor-icon);
 }
+
+.notAdded {
+  opacity: 0;
+}
