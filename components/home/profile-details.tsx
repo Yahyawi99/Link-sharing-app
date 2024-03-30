@@ -83,9 +83,12 @@ export default function ProfileDetails() {
               id="firstName"
               name="firstName"
               placeholder="e.g Yassin"
-              value={user.firstName}
+              value={user?.firstName}
               onChange={(e) =>
-                setUser({ ...user, firstName: e.currentTarget.value })
+                setUser((prev) => {
+                  if (prev) prev.firstName = e.currentTarget.value;
+                  return prev;
+                })
               }
             />
             <p className={styles.error}>
@@ -103,9 +106,12 @@ export default function ProfileDetails() {
               id="lastName"
               name="lastName"
               placeholder="e.g Yahyawi"
-              value={user.lastName}
+              value={user?.lastName}
               onChange={(e) =>
-                setUser({ ...user, lastName: e.currentTarget.value })
+                setUser((prev) => {
+                  if (prev) prev.lastName = e.currentTarget.value;
+                  return prev;
+                })
               }
             />
             <p className={styles.error}>
@@ -123,9 +129,12 @@ export default function ProfileDetails() {
               id="email"
               name="email"
               placeholder="e.g yassin@gmail.com"
-              value={user.email}
+              value={user?.email}
               onChange={(e) =>
-                setUser({ ...user, email: e.currentTarget.value })
+                setUser((prev) => {
+                  if (prev) prev.email = e.currentTarget.value;
+                  return prev;
+                })
               }
             />
             <p className={styles.error}>{formState.errors.email?.join(", ")}</p>
