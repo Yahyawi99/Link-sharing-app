@@ -26,7 +26,7 @@ export default function PhoneIllustration() {
         <div>
           <div className={styles.user}>
             <Image
-              src={`/uploads/${user.avatar}`}
+              src={user.avatar ? `/uploads/${user.avatar}` : ""}
               alt="user"
               width={75}
               height={75}

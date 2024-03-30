@@ -3,7 +3,7 @@
   min-height: 100vh;
 }
 
-
+/* ==============Header============== */
 .container>div:nth-child(1) {
   height: 300px;
   background-color: var(--purple);
@@ -37,4 +37,10 @@
 
 .container header button:hover {
   background-color: var(--purple-hover);
+}
+
+
+/* ==============Iluustration============== */
+.container>div:nth-child(2) {
+  margin: -125px 0 25px 0;
 }

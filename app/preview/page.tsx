@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PhoneIllustration from "@/components/home/illustration";
 import styles from "@/styles/pages/preview/index.module.css";
 
 export default function Preview() {
@@ -13,6 +14,8 @@ export default function Preview() {
           <button>Share Link</button>
         </header>
       </div>
+
+      {/* <PhoneIllustration /> */}
     </div>
   );
 }
