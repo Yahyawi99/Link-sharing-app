@@ -25,7 +25,7 @@ export default function PhoneCardPreview() {
           alt="user"
           width={125}
           height={125}
-          loading="eager"
+          priority={true}
         />
 
         {user?.firstName && user?.lastName ? (
@@ -42,43 +42,53 @@ export default function PhoneCardPreview() {
       </div>
 
       <div className={styles.links}>
-        {links.map((link) => {
-          return (
-            <div
-              key={link.id}
-              className={styles[formatIconName(link.name)]}
-              style={{
-                color: `var(--${formatIconName(link.name)}-clr)`,
-                background: `var(--${formatIconName(link.name)}-bg)`,
-              }}
-            >
-              <span
+        {links.length > 0 ? (
+          links.map((link) => {
+            return (
+              <div
+                key={link.id}
+                className={styles[formatIconName(link.name)]}
                 style={{
-                  maskImage: `url(/icons/select-icons/icon-${formatIconName(
-                    link.name
-                  )}.svg)`,
-                  background: `var(--${formatIconName(link.name)}-icon)`,
+                  color: `var(--${formatIconName(link.name)}-clr)`,
+                  background: `var(--${formatIconName(link.name)}-bg)`,
                 }}
-              />
-              <p>{link.name}</p>
+              >
+                <span
+                  style={{
+                    maskImage: `url(/icons/select-icons/icon-${formatIconName(
+                      link.name
+                    )}.svg)`,
+                    background: `var(--${formatIconName(link.name)}-icon)`,
+                  }}
+                />
+                <p>{link.name}</p>
 
-              <i className={styles.arrow}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="none"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill="#fff"
-                    d="M2.667 7.333v1.334h8L7 12.333l.947.947L13.227 8l-5.28-5.28L7 3.667l3.667 3.666h-8Z"
-                  />
-                </svg>
-              </i>
-            </div>
-          );
-        })}
+                <i className={styles.arrow}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill="#fff"
+                      d="M2.667 7.333v1.334h8L7 12.333l.947.947L13.227 8l-5.28-5.28L7 3.667l3.667 3.666h-8Z"
+                    />
+                  </svg>
+                </i>
+              </div>
+            );
+          })
+        ) : (
+          <div className={styles.placeholders}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        )}
       </div>
     </div>
   );
