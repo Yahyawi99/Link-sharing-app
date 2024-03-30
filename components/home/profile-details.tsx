@@ -8,7 +8,7 @@ import Image from "next/image";
 import styles from "@/styles/components/home/profileDetails.module.css";
 
 export default function ProfileDetails() {
-  const { setUser, user, setLoading, animateShowModal } = useMain();
+  const { setUser, user, setLoading, animateShowModal, getData } = useMain();
   const [inputFileValue, setInputFileValue] = useState("");
   const [avatarPath, setAvatarPath] = useState("");
   const [formState, action] = useFormState(actions.saveProfileDetails, {
@@ -26,6 +26,7 @@ export default function ProfileDetails() {
   useEffect(() => {
     if (formState.success) {
       animateShowModal();
+      getData();
     }
     setLoading(false);
   }, [formState]);
