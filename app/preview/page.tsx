@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PhoneIllustration from "@/components/home/illustration";
+import PhoneCardPreview from "@/components/preview/phone-card";
 import styles from "@/styles/pages/preview/index.module.css";
 
 export default function Preview() {
@@ -15,7 +15,7 @@ export default function Preview() {
         </header>
       </div>
 
-      {/* <PhoneIllustration /> */}
+      <PhoneCardPreview />
     </div>
   );
 }

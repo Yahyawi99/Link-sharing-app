@@ -15,7 +15,7 @@ export default function Wrapper({ children }: { children: JSX.Element[] }) {
       <Header toggleContent={setContent} content={content} />
 
       <div className={`${styles.main} ${loading ? styles.isLoading : ""}`}>
-        {/* {children[0]} */}
+        {children[0]}
 
         <div>
           {content === "links" ? children[1] : children[2]}

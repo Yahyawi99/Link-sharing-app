@@ -20,8 +20,8 @@ interface ContextTypes {
   showModal: boolean;
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
-  user: UserDocument;
-  setUser: Dispatch<SetStateAction<UserDocument>>;
+  user: UserDocument | undefined;
+  setUser: Dispatch<SetStateAction<UserDocument | undefined>>;
   getData: () => void;
 }
 
@@ -32,7 +32,7 @@ const AppContext = createContext<ContextTypes>({
   showModal: false,
   loading: false,
   setLoading: () => {},
-  user: {},
+  user: undefined,
   setUser: () => {},
   getData: () => {},
 });
@@ -43,19 +43,19 @@ export default function MainContextProvider({
   children: React.ReactNode;
 }) {
   const [links, setLinks] = useState<SingleLink[]>([]);
-  const [user, setUser] = useState<UserDocument>({});
+  const [user, setUser] = useState<UserDocument | undefined>();
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const getData = async () => {
-    const userLinks =
-      (await fetchUserLinks(localStorage.getItem("email") || "")) || [];
-    setLinks(userLinks);
-
     const user = (await fetchUser(
       localStorage.getItem("email") || ""
     )) as UserDocument;
     setUser(user);
+
+    const userLinks =
+      (await fetchUserLinks(localStorage.getItem("email") || "")) || [];
+    setLinks(userLinks);
 
     setLoading(false);
   };
