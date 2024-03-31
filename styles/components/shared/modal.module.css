@@ -6,6 +6,7 @@
   bottom: -40px;
   left: 0;
   transition: .3s;
+  opacity: 0;
   z-index: 20;
 }
 
@@ -26,4 +27,5 @@
 /* =============================== */
 .showModal {
   bottom: 10px;
+  opacity: 1;
 }

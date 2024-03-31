@@ -147,3 +147,22 @@
   bottom: 25px;
   font-size: 1.1rem;
 }
+
+/* ============================== */
+@media screen and (max-width:600px) {
+
+  .profileDetailsContainer>h1,
+  .profileDetailsContainer>p {
+    text-align: center;
+  }
+
+  .form>div:nth-child(1) {
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+  }
+
+  .form>div:not(:last-child) {
+    padding: 10px;
+  }
+}

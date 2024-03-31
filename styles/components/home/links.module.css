@@ -141,6 +141,15 @@
   text-align: center;
 }
 
+/* ============================== */
+@media screen and (max-width:600px) {
+
+  .linksContainer>h1,
+  .linksContainer>p {
+    text-align: center;
+  }
+}
+
 
 /* ================================ */
 .linksContainer .disableBtn {
