@@ -1,13 +1,17 @@
 .container {
-  width: 100%;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
 }
 
 /* ==============Header============== */
 .container>div:nth-child(1) {
+  width: 100%;
   height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   background-color: var(--purple);
   border-radius: 0 0 50px 50px;
   padding-top: 25px;
@@ -21,7 +25,6 @@
   align-items: center;
   border-radius: 8px;
   padding: 25px 15px;
-  margin: auto;
 }
 
 .container header button {
@@ -39,4 +42,19 @@
 
 .container header button:hover {
   background-color: var(--purple-hover);
+}
+
+
+
+/* ================================ */
+@media screen and (max-width:600px) {
+
+  /* ==============Header============== */
+  .container>div:nth-child(1) {
+    border-radius: 0px;
+  }
+
+  .container header button {
+    width: 100px;
+  }
 }
