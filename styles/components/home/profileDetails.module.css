@@ -51,6 +51,7 @@
   border-radius: 8px;
   position: relative;
   cursor: pointer;
+  margin: 0 5px;
 }
 
 .form input[type="file"] {
@@ -151,11 +152,6 @@
 /* ============================== */
 @media screen and (max-width:600px) {
 
-  .profileDetailsContainer>h1,
-  .profileDetailsContainer>p {
-    text-align: center;
-  }
-
   .form>div:nth-child(1) {
     flex-direction: column;
     gap: 25px;
@@ -164,5 +160,13 @@
 
   .form>div:not(:last-child) {
     padding: 10px;
+  }
+}
+
+@media screen and (max-width:1000px) {
+
+  .profileDetailsContainer>h1,
+  .profileDetailsContainer>p {
+    text-align: center;
   }
 }
