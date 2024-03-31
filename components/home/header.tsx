@@ -1,5 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Logo from "@/components/shared/logo";
 import styles from "@/styles/components/home/header.module.css";
 
@@ -64,7 +65,15 @@ export default function Header({ toggleContent, content }: Props) {
 
       <div>
         <Link href="/preview">
-          <button>Preview</button>
+          <button>
+            <Image
+              src="/icons/icon-preview-header.svg"
+              alt="preview"
+              width={18}
+              height={18}
+            />
+            <p>Preview</p>
+          </button>
         </Link>
       </div>
     </header>

@@ -48,6 +48,10 @@
   font-weight: 600;
 }
 
+.header>div:nth-child(3) button img {
+  display: none;
+}
+
 .header>div button:hover {
   background: var(--purple-hover);
 }
@@ -56,6 +60,28 @@
   color: var(--grey);
 }
 
+
+/* =================================== */
+@media screen and (max-width:600px) {
+
+  .header>div:nth-child(1) h1,
+  .header>div:nth-child(2) button p,
+  .header>div:nth-child(3) button p {
+    display: none;
+  }
+
+  .header>div:nth-child(3) button img {
+    display: initial;
+  }
+
+  .header button {
+    width: 50px;
+  }
+
+  .header>div:nth-child(1) img {
+    transform: scale(1.1);
+  }
+}
 
 
 /* =================================== */

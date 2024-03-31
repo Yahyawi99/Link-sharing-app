@@ -29,6 +29,13 @@
 }
 
 
+/* ============================== */
+@media screen and (max-width:600px) {
+  .container {
+    padding: 5px;
+  }
+}
+
 /* ======loading animation====== */
 .isLoading {
   animation-name: loading;
