@@ -1,7 +1,7 @@
 "use client";
 
 import { useMain } from "@/context";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import PhoneCardPreview from "@/components/preview/phone-card";
