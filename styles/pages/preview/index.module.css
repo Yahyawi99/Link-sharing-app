@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   overflow-x: hidden;
 }
 
@@ -49,6 +50,24 @@
   background-color: var(--purple-hover);
 }
 
+.copyModal {
+  height: 40px;
+  background-color: var(--dark-grey);
+  color: var(--white);
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  position: fixed;
+  bottom: -40px;
+  transition: .3s;
+  padding: 0px 15px;
+}
+
+.copyModal p {
+  font-size: 1.1rem;
+}
 
 
 /* ================================ */
@@ -62,4 +81,10 @@
   .container header button {
     width: 100px;
   }
+}
+
+
+/* ====================== */
+.copied {
+  bottom: 10px;
 }
