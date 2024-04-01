@@ -1,18 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
 import { useMain } from "@/context";
+import { UserDocument, SingleLink } from "@/interfaces";
 import { formatIconName } from "@/utils/format-icon-name";
 import Image from "next/image";
 import styles from "@/styles/components/preview/phone-card.module.css";
 
-export default function PhoneCardPreview() {
-  const { links, user, getData } = useMain();
+interface Props {
+  user?: UserDocument;
+  links: SingleLink[];
+}
 
-  useEffect(() => {
-    getData();
-  }, []);
-
+export default function PhoneCardPreview({ user, links }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.user}>

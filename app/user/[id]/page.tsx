@@ -27,7 +27,7 @@ export default async function SharedUserLinks({ params }: Props) {
     <div className={styles.container}>
       <div></div>
 
-      <PhoneCardPreview />
+      {/* <PhoneCardPreview /> */}
     </div>
   );
 }
