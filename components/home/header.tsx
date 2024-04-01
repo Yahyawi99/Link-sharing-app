@@ -1,7 +1,6 @@
 "use client";
 
 import type { Dispatch, SetStateAction } from "react";
-import { useMain } from "@/context";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "@/components/shared/logo";
@@ -13,8 +12,6 @@ interface Props {
 }
 
 export default function Header({ toggleContent, content }: Props) {
-  const { user } = useMain();
-
   return (
     <header className={styles.header}>
       <div>
@@ -69,7 +66,7 @@ export default function Header({ toggleContent, content }: Props) {
       </div>
 
       <div>
-        <Link href={`/preview/${user?.id}`}>
+        <Link href="/preview">
           <button>
             <Image
               src="/icons/icon-preview-header.svg"

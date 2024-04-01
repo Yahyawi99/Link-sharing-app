@@ -40,6 +40,11 @@
   padding: 10px 0;
 }
 
+.container header button:nth-child(2) {
+  background-color: var(--purple);
+  color: var(--white);
+}
+
 .container header button:hover {
   background-color: var(--purple-hover);
 }
