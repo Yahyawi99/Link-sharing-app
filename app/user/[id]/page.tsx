@@ -5,12 +5,12 @@ import PhoneCardPreview from "@/components/preview/phone-card";
 import styles from "@/styles/pages/user/index.module.css";
 
 const getUserData = async (id: string) => {
-  try {
-    await connect();
-    const user = await User.find({ _id: id });
-    const userLinks = await LinkModel.find({ user: id });
-    console.log(user);
-  } catch (error) {}
+  await connect();
+
+  const user = await User.findOne({ _id: id });
+  const userLinks = await LinkModel.find({ user: id });
+
+  return { user, links: userLinks };
 };
 
 interface Props {
@@ -23,11 +23,13 @@ export default async function SharedUserLinks({ params }: Props) {
   const { id } = params;
   const data = await getUserData(id);
 
+  console.log(data);
+
   return (
     <div className={styles.container}>
       <div></div>
 
-      {/* <PhoneCardPreview /> */}
+      <PhoneCardPreview user={data.user} links={data.links} />
     </div>
   );
 }
