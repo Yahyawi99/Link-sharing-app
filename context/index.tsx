@@ -14,8 +14,8 @@ import { fetchUser } from "@/db/user";
 import { UserDocument } from "@/interfaces";
 
 interface ContextTypes {
-  links: SingleLink[];
-  setLinks: Dispatch<SetStateAction<SingleLink[]>>;
+  links: SingleLink[] | undefined;
+  setLinks: Dispatch<SetStateAction<SingleLink[] | undefined>>;
   animateShowModal: () => void;
   showModal: boolean;
   loading: boolean;
@@ -42,19 +42,17 @@ export default function MainContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [links, setLinks] = useState<SingleLink[]>([]);
+  const [links, setLinks] = useState<SingleLink[] | undefined>();
   const [user, setUser] = useState<UserDocument | undefined>();
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const getData = async () => {
-    const user = (await fetchUser(
-      localStorage.getItem("email") || ""
-    )) as UserDocument;
+    const user = await fetchUser(localStorage.getItem("email") || "");
+
     setUser(user);
 
-    const userLinks =
-      (await fetchUserLinks(localStorage.getItem("email") || "")) || [];
+    const userLinks = await fetchUserLinks(localStorage.getItem("email") || "");
     setLinks(userLinks);
 
     setLoading(false);

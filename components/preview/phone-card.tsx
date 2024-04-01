@@ -1,6 +1,5 @@
 "use client";
 
-import { useMain } from "@/context";
 import { UserDocument, SingleLink } from "@/interfaces";
 import { formatIconName } from "@/utils/format-icon-name";
 import Image from "next/image";
@@ -8,7 +7,7 @@ import styles from "@/styles/components/preview/phone-card.module.css";
 
 interface Props {
   user?: UserDocument;
-  links: SingleLink[];
+  links?: SingleLink[];
 }
 
 export default function PhoneCardPreview({ user, links }: Props) {
@@ -41,8 +40,8 @@ export default function PhoneCardPreview({ user, links }: Props) {
       </div>
 
       <div className={styles.links}>
-        {links.length > 0 ? (
-          links.map((link) => {
+        {links ? (
+          links?.map((link) => {
             return (
               <div
                 key={link.id}

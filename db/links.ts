@@ -14,9 +14,11 @@ export const fetchUserLinks = async (
     const user = await User.findOne({ email });
     const links: LinkDatabase[] = (await Link.find({ user: user._id })) || [];
 
-    return links.map((link) => {
+    const userLinks = links.map((link) => {
       return { id: link.id, name: link.name, url: link.url };
     });
+
+    return userLinks;
   } catch (err) {
     console.log(err);
   }
