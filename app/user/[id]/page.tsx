@@ -23,8 +23,6 @@ export default async function SharedUserLinks({ params }: Props) {
   const { id } = params;
   const data = await getUserData(id);
 
-  console.log(data);
-
   return (
     <div className={styles.container}>
       <div></div>
