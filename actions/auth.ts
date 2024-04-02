@@ -29,9 +29,11 @@ export async function login(
   formState: AuthFormState,
   formData: FormData
 ): Promise<AuthFormState> {
+  const email = formData.get("email");
+  const password = formData.get("password");
   const data = {
-    email: formData.get("email"),
-    password: formData.get("password"),
+    email,
+    password,
   };
 
   const result = loginShema.safeParse(data);
@@ -51,10 +53,19 @@ export async function login(
     };
   }
 
+  const isPasswordCorrect = await user.ComparePasswords(password as string);
+
+  if (!isPasswordCorrect) {
+    return {
+      errors: { _auth: ["Incorrect Password."] },
+    };
+  }
+
   const token = createToken(user);
   attachCookieToResponse(token);
 
-  redirect("/");
+  // redirect("/");
+  return { errors: {} };
 }
 
 // ====================Signup====================
