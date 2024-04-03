@@ -65,8 +65,7 @@ export async function login(
   const token = createToken(user);
   attachCookieToResponse(token);
 
-  // redirect("/");
-  return { errors: {} };
+  redirect("/");
 }
 
 // ====================Signup====================
