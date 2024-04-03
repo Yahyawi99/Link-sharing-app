@@ -21,6 +21,8 @@ export default function ProfileDetails() {
       const name = inputFileValue.split("\\")[2].split(" ").join("-");
       setAvatarPath(name);
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputFileValue]);
 
   useEffect(() => {

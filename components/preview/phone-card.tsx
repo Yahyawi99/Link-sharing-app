@@ -44,9 +44,8 @@ export default function PhoneCardPreview({ user, links }: Props) {
         {links ? (
           links?.map((link) => {
             return (
-              <Link href={link.url} target="_blank">
+              <Link key={link.id} href={link.url} target="_blank">
                 <div
-                  key={link.id}
                   className={`${styles.link} ${
                     styles[formatIconName(link.name)]
                   }`}

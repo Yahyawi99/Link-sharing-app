@@ -17,6 +17,8 @@ export default function Login() {
 
   useEffect(() => {
     setLoading(false);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formState]);
 
   return (
@@ -78,7 +80,7 @@ export default function Login() {
         </form>
 
         <p>
-          Don't have an account? <Link href="/signup">Create account</Link>
+          Don&apos;t have an account? <Link href="/signup">Create account</Link>
         </p>
       </div>
     </div>

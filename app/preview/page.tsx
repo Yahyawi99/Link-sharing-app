@@ -13,6 +13,8 @@ export default function Preview() {
 
   useEffect(() => {
     getData();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const shareLink = () => {
