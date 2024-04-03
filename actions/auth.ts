@@ -53,7 +53,8 @@ export async function login(
     };
   }
 
-  const isPasswordCorrect = await user.ComparePasswords(password as string);
+  const isPasswordCorrect =
+    user.ComparePasswords && (await user.ComparePasswords(password as string));
 
   if (!isPasswordCorrect) {
     return {
