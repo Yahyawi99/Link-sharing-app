@@ -34,11 +34,6 @@
   height: 15px;
   background-color: var(--purple-light);
   border-radius: 25px;
-  animation-name: loading;
-  animation-duration: .75s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
   margin: auto;
 }
 
