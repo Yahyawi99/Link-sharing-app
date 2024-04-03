@@ -44,7 +44,7 @@ export default function PhoneIllustration() {
           </div>
 
           <div className={styles.links}>
-            {links.map((link) => {
+            {links?.map((link) => {
               return (
                 <div
                   key={link.id}

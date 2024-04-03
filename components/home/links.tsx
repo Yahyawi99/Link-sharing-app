@@ -19,14 +19,14 @@ export default function Links() {
 
   const revomeLink = (id: string) => {
     setLinks((prev) => {
-      const filteredPrev = prev.filter((link) => link.id != id);
+      const filteredPrev = prev?.filter((link) => link.id != id);
       return filteredPrev;
     });
   };
 
   const addLink = () => {
     setLinks((prev) => {
-      return [...prev, { id: uuidv4(), name: "Github", url: "" }];
+      return prev ? [...prev, { id: uuidv4(), name: "Github", url: "" }] : prev;
     });
   };
 
@@ -50,7 +50,7 @@ export default function Links() {
       </p>
 
       <button
-        className={links.length === 5 ? styles.disableBtn : ""}
+        className={links?.length === 5 ? styles.disableBtn : ""}
         type="button"
         onClick={addLink}
       >
@@ -62,7 +62,7 @@ export default function Links() {
         action={action}
         onSubmit={() => setLoading(true)}
       >
-        {links.length ? (
+        {links ? (
           links.map((link, i) => {
             return (
               <div key={`link-${i}`} className={styles.link}>
