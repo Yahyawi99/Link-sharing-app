@@ -2,9 +2,9 @@ import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 
 interface TokenType {
-  userId: string;
-  name: string;
-  email: string;
+  userId?: string;
+  name?: string;
+  email?: string;
 }
 
 export const createJWT = (token: TokenType) =>

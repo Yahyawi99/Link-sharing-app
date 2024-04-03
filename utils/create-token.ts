@@ -1,5 +1,5 @@
-import { UserDocument } from "@/models/User";
+import { UserDocument } from "@/interfaces";
 
 export const createToken = (user: UserDocument) => {
-  return { userId: user._id as string, name: user.username, email: user.email };
+  return { userId: user.id, name: user.username, email: user.email };
 };

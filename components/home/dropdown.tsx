@@ -20,7 +20,7 @@ export default function Dropdown({
 
   const toggelPltaform = (platform: string) => {
     setLinks((prev) => {
-      const editedPrev = prev.map((singleLink) => {
+      const editedPrev = prev?.map((singleLink) => {
         if (singleLink.id === link.id) {
           singleLink.name = platform;
         }
