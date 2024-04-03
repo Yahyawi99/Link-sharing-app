@@ -31,6 +31,8 @@ export default function ProfileDetails() {
       getData();
     }
     setLoading(false);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formState]);
 
   return (

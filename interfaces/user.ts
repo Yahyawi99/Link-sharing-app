@@ -8,5 +8,5 @@ export interface UserDocument {
   username?: string;
   email?: string;
   password?: string;
-  ComparePasswords: (inputPassword: string) => boolean;
+  ComparePasswords?: (inputPassword: string) => boolean;
 }
